@@ -359,7 +359,7 @@ table { width:100%; border-collapse:collapse; }
 
   <script>
     let flights = [];
-     (id) => document.getElementById(id);
+     const $ = (id) => document.getElementById(id);
     const searchInput = $('searchInput'), regionFilter = $('regionFilter'), countryFilter = $('countryFilter'), airportFilter = $('airportFilter'), timeFilter = $('timeFilter');
     const resultsBody = $('resultsBody'), tableScroll = document.querySelector('.table-scroll'), rowsPerPage = $('rowsPerPage'), selectedCountryLabel = $('selectedCountryLabel'), activeFilters = $('activeFilters'), loadingState = $('loadingState'), copyToast = $('copyToast');
 function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
