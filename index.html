@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Finder</title>
+  <style>
+    :root {
+      --jade:#005D63;
+      --jade-dark:#003f43;
+      --jade-soft:#e6f1f0;
+      --sand:#f7f3ee;
+      --ink:#172b2e;
+      --muted:#65777a;
+      --line:#d9e3e2;
+      --white:#ffffff;
+      --gold:#b68b45;
+      --red:#d21e2b;
+      --shadow:0 22px 60px rgba(0, 55, 58, .12);
+      --radius:22px;
+    }
+    * { box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+    img, svg { max-width:100%; height:auto; }
+    main { overflow-x:hidden; }
+
+    body {
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg, #fbfaf8 0%, var(--sand) 100%);
+    }
+    .topbar {
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(18px);
+      background:rgba(255,255,255,.86);
+      border-bottom:1px solid rgba(0,93,99,.12);
+    }
+    .nav {
+      max-width:1180px; margin:auto; padding:clamp(12px, 1.6vw, 18px) clamp(16px, 3vw, 24px);
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+
+    .brand { display:flex; align-items:center; gap:14px; font-weight:700; letter-spacing:.02em; color:var(--jade); min-width:0; }
+    .brand-logo {
+      display:block;
+      height:clamp(30px, 5vw, 48px);
+      width:auto;
+      max-width:min(52vw, 430px);
+      object-fit:contain;
+      object-position:left center;
+      flex-shrink:1;
+    }
+    .brand-title {
+      white-space:nowrap;
+      font-size:15px;
+      color:var(--jade-dark);
+      border-left:1px solid rgba(0,93,99,.22);
+      padding-left:14px;
+      line-height:1;
+    }
+.navlinks { display:flex; gap:24px; color:var(--muted); font-size:14px; }
+    .hero { max-width:1180px; margin:0 auto; padding:clamp(16px, 3vw, 28px) clamp(16px, 3vw, 24px) clamp(12px, 2vw, 18px); }
+    .hero-card {
+      display:grid; grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr); gap:22px;
+      background:linear-gradient(135deg, var(--jade) 0%, #0b7775 52%, #134f54 100%);
+      color:#fff; border-radius:clamp(18px, 2vw, 24px); padding:clamp(18px, 3vw, 24px) clamp(18px, 3vw, 28px); box-shadow:var(--shadow); overflow:hidden; position:relative;
+    }
+    .hero-card:after {
+      content:""; position:absolute; right:-110px; bottom:-120px; width:300px; height:300px; border-radius:50%;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+    }
+    .eyebrow { color:#cce6e3; text-transform:uppercase; font-size:12px; letter-spacing:.18em; font-weight:700; }
+    h1 { margin:8px 0 8px; font-size:clamp(26px,3.2vw,42px); line-height:1.05; letter-spacing:-.035em; }
+    .hero p { margin:0; max-width:620px; color:#e9f5f4; font-size:15px; line-height:1.45; }
+    .info-panel {
+      position:relative; z-index:1; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+      border-radius:18px; padding:16px 18px; align-self:center;
+    }
+    .info-panel strong { display:block; font-size:28px; }
+    .info-panel span { color:#dceceb; font-size:14px; }
+    .controls { max-width:1180px; margin:0 auto; padding:0 clamp(16px, 3vw, 24px) clamp(12px, 2vw, 16px); }
+    .search-box {
+      background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+      padding:12px 14px; box-shadow:0 10px 28px rgba(21,55,57,.06);
+    }
+    .filters { display:grid; grid-template-columns:2fr 1fr 1fr 1fr auto; gap:10px; }
+    input, select, button {
+      width:100%; border:1px solid var(--line); border-radius:12px; padding:9px 11px;
+      font:inherit; background:#fff; color:var(--ink); outline:none;
+    }
+    input:focus, select:focus { border-color:var(--jade); box-shadow:0 0 0 4px rgba(0,93,99,.1); }
+    button { cursor:pointer; background:var(--jade); color:#fff; border-color:var(--jade); font-weight:700; min-width:86px; }
+    button:hover { background:var(--jade-dark); }
+    .summary {display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px;}
+    .metric { background:#fbfdfd; border:1px solid var(--line); border-radius:14px; padding:10px 12px; }
+    .metric .num { font-size:20px; font-weight:800; color:var(--jade); }
+    .metric .label { color:var(--muted); font-size:12px; margin-top:1px; }
+    .content { max-width:1180px; margin:0 auto clamp(32px, 5vw, 54px); padding:0 clamp(16px, 3vw, 24px); }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin:10px 0 16px; }
+    h2 { margin:0; font-size:26px; letter-spacing:-.02em; }
+    .hint { color:var(--muted); font-size:14px; }
+    .table-tools { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13px; }
+    .table-tools label { white-space:nowrap; }
+    .table-tools select { width:auto; min-width:86px; padding:7px 9px; border-radius:10px; font-size:13px; }
+
+.table-wrap { background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,.05); }
+    .table-scroll { max-height:820px; overflow:auto; }
+table { width:100%; border-collapse:collapse; }
+    th, td { padding:16px; text-align:left; border-bottom:1px solid #edf2f1; font-size:14px; }
+    th { background:#f4faf9; color:#33585b; font-size:12px; text-transform:uppercase; letter-spacing:.08em; position:sticky; top:0; z-index:5; }
+    tr:hover td { background:#fbf7ef; }
+    .pill { display:inline-flex; align-items:center; padding:6px 10px; background:var(--jade-soft); color:var(--jade); border-radius:999px; font-weight:700; font-size:12px; }
+    .country-code { cursor:help; border-bottom:1px dotted rgba(0,93,99,.45); font-weight:700; }
+
+    .flight { font-weight:800; color:var(--jade-dark); }
+    .note { color:var(--muted); font-size:12px; margin-top:10px; line-height:1.5; }
+    .empty { text-align:center; padding:42px; color:var(--muted); }
+    footer { max-width:1180px; margin:0 auto; padding:22px 24px 42px; color:var(--muted); font-size:12px; }
+
+
+    /* Responsive layout: desktop, tablet, and iPhone-sized mobile */
+    @media (min-width:901px) {
+      .table-scroll { max-width:100%; }
+      table { min-width:920px; }
+    }
+
+    @media (max-width:900px) and (min-width:621px) {
+      .nav { gap:14px; }
+      .brand-logo { height:clamp(32px, 5vw, 44px); max-width:56vw; }
+      .hero-card { grid-template-columns:1fr; gap:16px; padding:22px; }
+      .filters { grid-template-columns:1fr 1fr; gap:10px; }
+      .summary { grid-template-columns:repeat(2, 1fr); }
+      .section-head { align-items:center; }
+      .table-wrap { border-radius:18px; }
+      .table-scroll { overflow:auto; -webkit-overflow-scrolling:touch; }
+      table { min-width:820px; }
+      th, td { padding:13px 12px; }
+      .navlinks { display:none; }
+    }
+
+    @media (max-width:620px) {
+      body { background:linear-gradient(180deg, #fbfaf8 0%, #f7f3ee 100%); }
+      .topbar { position:sticky; }
+      .nav { padding:12px 14px; gap:10px; }
+      .brand { gap:8px; }
+      .brand-logo { height:30px; max-width:66vw; }
+      .brand-title, .navlinks { display:none; }
+      .hero { padding:14px 14px 10px; }
+      .hero-card { grid-template-columns:1fr; gap:12px; padding:16px; border-radius:18px; }
+      .hero-card:after { width:210px; height:210px; right:-90px; bottom:-100px; }
+      .eyebrow { font-size:10px; letter-spacing:.14em; }
+      h1 { font-size:clamp(22px, 7vw, 28px); line-height:1.08; }
+      .hero p { font-size:13px; line-height:1.4; }
+      .info-panel { padding:12px 14px; border-radius:14px; }
+      .info-panel strong { font-size:22px; }
+      .info-panel span { font-size:12px; }
+      .controls { padding:0 14px 12px; }
+      .search-box { padding:10px; border-radius:16px; }
+      .filters { grid-template-columns:1fr; gap:8px; }
+      input, select, button { font-size:14px; padding:10px 11px; border-radius:10px; }
+      button { min-width:100%; }
+      .summary { grid-template-columns:repeat(2, 1fr); gap:8px; margin-top:8px; }
+      .metric { padding:9px 10px; border-radius:12px; }
+      .metric .num { font-size:18px; }
+      .metric .label { font-size:11px; }
+      .content { padding:0 14px; margin-bottom:30px; }
+      .section-head { flex-direction:column; align-items:flex-start; gap:8px; margin:8px 0 10px; }
+      h2 { font-size:21px; }
+      .table-tools { width:100%; justify-content:space-between; font-size:12px; }
+      .table-tools select { min-width:80px; padding:7px 8px; font-size:12px; }
+      .table-wrap { border-radius:16px; overflow:hidden; }
+      .table-scroll { overflow:auto; -webkit-overflow-scrolling:touch; }
+      table { min-width:760px; }
+      th, td { padding:11px 9px; font-size:12px; }
+      th { font-size:10px; letter-spacing:.06em; }
+      .pill { padding:4px 8px; font-size:11px; }
+      .note, footer { font-size:11px; }
+      footer { padding:18px 14px 30px; }
+    }
+
+    /* iPhone 12 Pro / iPhone 14 Pro width range: 390-393px */
+    @media (min-width:390px) and (max-width:430px) {
+      .brand-logo { height:31px; max-width:68vw; }
+      .hero-card { padding:17px; }
+      .hero p { max-width:100%; }
+      .summary { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      .table-scroll { max-height:calc(100vh - 260px); }
+    }
+
+    @media (max-width:389px) {
+      .brand-logo { height:28px; max-width:72vw; }
+      .summary { grid-template-columns:1fr; }
+      table { min-width:720px; }
+      .table-scroll { max-height:calc(100vh - 250px); }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav">
+      <div class="brand"><img class="brand-logo" src="data:image/jpeg;base64,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" alt="Cathay 80 logo" /><div class="brand-title">Flight Finder</div></div>
+      <nav class="navlinks"><span>Flights</span><span>Destinations</span><span>Timetable</span></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <div>
+          <div class="eyebrow">Searchable flight timetable</div>
+          <h1>Explore CX flights.</h1>
+          <p>Search by city, airport code, country/region, or flight number.</p>
+        </div>
+        <div class="info-panel">
+          <span>Total scheduled flights</span>
+          <strong id="heroTotal">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="search-box">
+        <div class="filters">
+          <input id="searchInput" type="search" placeholder="Search: Tokyo, CX524, NRT, Japan..." />
+          <select id="regionFilter"><option value="">All regions</option></select>
+          <select id="airportFilter"><option value="">All airports</option></select>
+          <select id="timeFilter">
+            <option value="">Any departure time</option>
+            <option>Morning</option><option>Afternoon</option><option>Evening</option><option>Night</option>
+          </select>
+          <button id="resetBtn">Reset</button>
+        </div>
+        <div class="summary">
+          <div class="metric"><div class="num" id="matchCount">0</div><div class="label">Matching flights</div></div>
+          <div class="metric"><div class="num" id="cityCount">0</div><div class="label">Cities</div></div>
+          <div class="metric"><div class="num" id="airportCount">0</div><div class="label">Airports</div></div>
+          <div class="metric"><div class="num" id="nextDayCount">0</div><div class="label">Next-day arrivals</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+
+      <div class="section-head">
+        <div><h2>Flight timetable</h2></div>
+        <div class="table-tools">
+          <label for="rowsPerPage">Display rows</label>
+          <select id="rowsPerPage">
+            <option value="10">10</option>
+            <option value="15" selected>15</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Country / Region</th><th>Arrival City</th><th>Airport</th><th>Flight</th><th>Departure</th><th>Arrival</th><th>Duration</th>
+              </tr>
+</thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+        <div class="empty" id="emptyState" style="display:none;">No matching flights found. Try a broader search.</div>
+      </div>
+      <div class="note">Design note: this is a CX-inspired internal demo page, not an official Cathay Pacific website.</div>
+    </section>
+  </main>
+
+  <footer>Data source: uploaded Excel workbook “CX Flights.xlsx”. Built as a single static HTML file with embedded JSON data.</footer>
+
+  <script>
+    const flights = [{"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX334", "departure_time": "07:25", "arrival_time": "10:45", "duration": "3h 20m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX390", "departure_time": "09:00", "arrival_time": "12:25", "duration": "3h 25m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX332", "departure_time": "12:00", "arrival_time": "15:25", "duration": "3h 25m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX392", "departure_time": "12:55", "arrival_time": "17:25", "duration": "4h 30m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX336", "departure_time": "15:00", "arrival_time": "18:25", "duration": "3h 25m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX312", "departure_time": "17:00", "arrival_time": "20:25", "duration": "3h 25m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX344", "departure_time": "19:00", "arrival_time": "22:25", "duration": "3h 25m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Beijing (PEK)", "arrival_airport": "PEK", "flight_number": "CX340", "departure_time": "21:55", "arrival_time": "01:25", "duration": "3h 30m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Changsha (CSX)", "arrival_airport": "CSX", "flight_number": "CX330", "departure_time": "09:15", "arrival_time": "11:00", "duration": "1h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Changsha (CSX)", "arrival_airport": "CSX", "flight_number": "CX314", "departure_time": "10:15", "arrival_time": "12:00", "duration": "1h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Chengdu (TFU)", "arrival_airport": "TFU", "flight_number": "CX986", "departure_time": "10:00", "arrival_time": "12:35", "duration": "2h 35m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Chengdu (TFU)", "arrival_airport": "TFU", "flight_number": "CX916", "departure_time": "19:15", "arrival_time": "21:55", "duration": "2h 40m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Chongqing (CKG)", "arrival_airport": "CKG", "flight_number": "CX928", "departure_time": "13:35", "arrival_time": "16:10", "duration": "2h 35m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Fuzhou (FOC)", "arrival_airport": "FOC", "flight_number": "CX914", "departure_time": "08:30", "arrival_time": "10:15", "duration": "1h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Fuzhou (FOC)", "arrival_airport": "FOC", "flight_number": "CX990", "departure_time": "17:40", "arrival_time": "19:25", "duration": "1h 45m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Guangzhou (CAN)", "arrival_airport": "CAN", "flight_number": "CX950", "departure_time": "01:15", "arrival_time": "02:20", "duration": "1h 05m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Guangzhou (CAN)", "arrival_airport": "CAN", "flight_number": "CX982", "departure_time": "07:50", "arrival_time": "08:55", "duration": "1h 05m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Guangzhou (CAN)", "arrival_airport": "CAN", "flight_number": "CX988", "departure_time": "20:00", "arrival_time": "21:05", "duration": "1h 05m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Haikou (HAK)", "arrival_airport": "HAK", "flight_number": "CX310", "departure_time": "14:10", "arrival_time": "15:40", "duration": "1h 30m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Hangzhou (HGH)", "arrival_airport": "HGH", "flight_number": "CX958", "departure_time": "07:45", "arrival_time": "10:10", "duration": "2h 25m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Hangzhou (HGH)", "arrival_airport": "HGH", "flight_number": "CX960", "departure_time": "12:15", "arrival_time": "14:40", "duration": "2h 25m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Hangzhou (HGH)", "arrival_airport": "HGH", "flight_number": "CX962", "departure_time": "16:00", "arrival_time": "18:30", "duration": "2h 30m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Hangzhou (HGH)", "arrival_airport": "HGH", "flight_number": "CX964", "departure_time": "20:10", "arrival_time": "22:35", "duration": "2h 25m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Nanjing (NKG)", "arrival_airport": "NKG", "flight_number": "CX356", "departure_time": "10:25", "arrival_time": "13:00", "duration": "2h 35m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Nanjing (NKG)", "arrival_airport": "NKG", "flight_number": "CX304", "departure_time": "19:25", "arrival_time": "22:05", "duration": "2h 40m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Ningbo (NGB)", "arrival_airport": "NGB", "flight_number": "CX956", "departure_time": "11:00", "arrival_time": "13:20", "duration": "2h 20m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Qingdao (TAO)", "arrival_airport": "TAO", "flight_number": "CX954", "departure_time": "10:15", "arrival_time": "13:30", "duration": "3h 15m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX316", "departure_time": "08:10", "arrival_time": "11:05", "duration": "2h 55m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX368", "departure_time": "09:20", "arrival_time": "12:05", "duration": "2h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX376", "departure_time": "10:25", "arrival_time": "13:15", "duration": "2h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX360", "departure_time": "13:40", "arrival_time": "16:25", "duration": "2h 45m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX380", "departure_time": "15:00", "arrival_time": "17:50", "duration": "2h 50m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX364", "departure_time": "17:25", "arrival_time": "20:15", "duration": "2h 50m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX362", "departure_time": "19:20", "arrival_time": "22:10", "duration": "2h 50m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Pudong (PVG)", "arrival_airport": "PVG", "flight_number": "CX302", "departure_time": "21:05", "arrival_time": "23:55", "duration": "2h 50m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Hongqiao (SHA)", "arrival_airport": "SHA", "flight_number": "CX342", "departure_time": "09:35", "arrival_time": "12:05", "duration": "2h 30m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Shanghai Hongqiao (SHA)", "arrival_airport": "SHA", "flight_number": "CX328", "departure_time": "18:25", "arrival_time": "20:55", "duration": "2h 30m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Urumqi (URC)", "arrival_airport": "URC", "flight_number": "CX998", "departure_time": "01:15", "arrival_time": "07:00", "duration": "5h 45m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Wenzhou (WNZ)", "arrival_airport": "WNZ", "flight_number": "CX384", "departure_time": "08:30", "arrival_time": "10:40", "duration": "2h 10m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Wenzhou (WNZ)", "arrival_airport": "WNZ", "flight_number": "CX396", "departure_time": "17:00", "arrival_time": "19:05", "duration": "2h 05m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Wuhan (WUH)", "arrival_airport": "WUH", "flight_number": "CX936", "departure_time": "08:15", "arrival_time": "10:20", "duration": "2h 05m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Wuhan (WUH)", "arrival_airport": "WUH", "flight_number": "CX938", "departure_time": "17:35", "arrival_time": "19:40", "duration": "2h 05m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Xi’an (XIY)", "arrival_airport": "XIY", "flight_number": "CX946", "departure_time": "11:10", "arrival_time": "14:30", "duration": "3h 20m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Xiamen (XMN)", "arrival_airport": "XMN", "flight_number": "CX970", "departure_time": "09:30", "arrival_time": "11:05", "duration": "1h 35m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Xiamen (XMN)", "arrival_airport": "XMN", "flight_number": "CX978", "departure_time": "17:45", "arrival_time": "19:25", "duration": "1h 40m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇨🇳 China (Mainland)", "arrival_city": "Zhengzhou (CGO)", "arrival_airport": "CGO", "flight_number": "CX952", "departure_time": "12:45", "arrival_time": "15:20", "duration": "2h 35m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Narita (NRT)", "arrival_airport": "NRT", "flight_number": "CX524", "departure_time": "01:20", "arrival_time": "06:50", "duration": "5h 30m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Narita (NRT)", "arrival_airport": "NRT", "flight_number": "CX526", "departure_time": "08:15", "arrival_time": "13:40", "duration": "5h 25m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Narita (NRT)", "arrival_airport": "NRT", "flight_number": "CX504", "departure_time": "09:05", "arrival_time": "14:30", "duration": "5h 25m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Narita (NRT)", "arrival_airport": "NRT", "flight_number": "CX520", "departure_time": "10:40", "arrival_time": "16:05", "duration": "5h 25m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Narita (NRT)", "arrival_airport": "NRT", "flight_number": "CX500", "departure_time": "15:20", "arrival_time": "20:50", "duration": "5h 30m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Haneda (HND)", "arrival_airport": "HND", "flight_number": "CX548", "departure_time": "08:40", "arrival_time": "13:55", "duration": "5h 15m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Tokyo Haneda (HND)", "arrival_airport": "HND", "flight_number": "CX542", "departure_time": "16:20", "arrival_time": "21:35", "duration": "5h 15m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Osaka (KIX)", "arrival_airport": "KIX", "flight_number": "CX566", "departure_time": "01:55", "arrival_time": "06:40", "duration": "4h 45m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Osaka (KIX)", "arrival_airport": "KIX", "flight_number": "CX596", "departure_time": "08:10", "arrival_time": "12:55", "duration": "4h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Osaka (KIX)", "arrival_airport": "KIX", "flight_number": "CX506", "departure_time": "10:25", "arrival_time": "15:10", "duration": "4h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Osaka (KIX)", "arrival_airport": "KIX", "flight_number": "CX598", "departure_time": "13:20", "arrival_time": "18:05", "duration": "4h 45m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Osaka (KIX)", "arrival_airport": "KIX", "flight_number": "CX502", "departure_time": "16:30", "arrival_time": "21:15", "duration": "4h 45m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Nagoya (NGO)", "arrival_airport": "NGO", "flight_number": "CX536", "departure_time": "10:10", "arrival_time": "15:05", "duration": "4h 55m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Nagoya (NGO)", "arrival_airport": "NGO", "flight_number": "CX532", "departure_time": "16:15", "arrival_time": "21:15", "duration": "5h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Fukuoka (FUK)", "arrival_airport": "FUK", "flight_number": "CX512", "departure_time": "08:15", "arrival_time": "12:45", "duration": "4h 30m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Fukuoka (FUK)", "arrival_airport": "FUK", "flight_number": "CX528", "departure_time": "09:15", "arrival_time": "13:45", "duration": "4h 30m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Fukuoka (FUK)", "arrival_airport": "FUK", "flight_number": "CX588", "departure_time": "11:00", "arrival_time": "15:30", "duration": "4h 30m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Sapporo (CTS)", "arrival_airport": "CTS", "flight_number": "CX580", "departure_time": "09:15", "arrival_time": "15:20", "duration": "6h 05m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇯🇵 Japan", "arrival_city": "Sapporo (CTS)", "arrival_airport": "CTS", "flight_number": "CX582", "departure_time": "10:00", "arrival_time": "16:05", "duration": "6h 05m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇰🇷 South Korea", "arrival_city": "Seoul (ICN)", "arrival_airport": "ICN", "flight_number": "CX434", "departure_time": "07:55", "arrival_time": "12:40", "duration": "4h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇰🇷 South Korea", "arrival_city": "Seoul (ICN)", "arrival_airport": "ICN", "flight_number": "CX410", "departure_time": "09:25", "arrival_time": "14:05", "duration": "4h 40m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇰🇷 South Korea", "arrival_city": "Seoul (ICN)", "arrival_airport": "ICN", "flight_number": "CX418", "departure_time": "14:25", "arrival_time": "19:05", "duration": "4h 40m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇰🇷 South Korea", "arrival_city": "Seoul (ICN)", "arrival_airport": "ICN", "flight_number": "CX430", "departure_time": "17:40", "arrival_time": "22:25", "duration": "4h 45m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇰🇷 South Korea", "arrival_city": "Seoul (ICN)", "arrival_airport": "ICN", "flight_number": "CX426", "departure_time": "19:45", "arrival_time": "00:25", "duration": "4h 40m", "departure_band": "Evening", "arrival_next_day": true}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX422", "departure_time": "07:10", "arrival_time": "08:55", "duration": "1h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX488", "departure_time": "08:00", "arrival_time": "09:50", "duration": "1h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX564", "departure_time": "08:10", "arrival_time": "10:00", "duration": "1h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX530", "departure_time": "08:35", "arrival_time": "10:25", "duration": "1h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX466", "departure_time": "09:00", "arrival_time": "11:00", "duration": "2h 00m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX450", "departure_time": "09:55", "arrival_time": "11:45", "duration": "1h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX494", "departure_time": "10:10", "arrival_time": "12:10", "duration": "2h 00m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX400", "departure_time": "13:10", "arrival_time": "15:10", "duration": "2h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX420", "departure_time": "13:35", "arrival_time": "15:30", "duration": "1h 55m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX472", "departure_time": "15:45", "arrival_time": "17:40", "duration": "1h 55m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX402", "departure_time": "18:15", "arrival_time": "20:05", "duration": "1h 50m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX464", "departure_time": "19:20", "arrival_time": "21:20", "duration": "2h 00m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Taipei (TPE)", "arrival_airport": "TPE", "flight_number": "CX408", "departure_time": "22:50", "arrival_time": "00:35", "duration": "1h 45m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇹🇼 Taiwan", "arrival_city": "Kaohsiung (KHH)", "arrival_airport": "KHH", "flight_number": "CX432", "departure_time": "08:35", "arrival_time": "10:10", "duration": "1h 35m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Kaohsiung (KHH)", "arrival_airport": "KHH", "flight_number": "CX424", "departure_time": "11:05", "arrival_time": "12:40", "duration": "1h 35m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Kaohsiung (KHH)", "arrival_airport": "KHH", "flight_number": "CX458", "departure_time": "16:35", "arrival_time": "18:10", "duration": "1h 35m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇹🇼 Taiwan", "arrival_city": "Kaohsiung (KHH)", "arrival_airport": "KHH", "flight_number": "CX448", "departure_time": "21:40", "arrival_time": "23:10", "duration": "1h 30m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX659", "departure_time": "01:45", "arrival_time": "05:30", "duration": "3h 45m", "departure_band": "Night", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX691", "departure_time": "08:00", "arrival_time": "11:45", "duration": "3h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX759", "departure_time": "08:40", "arrival_time": "12:25", "duration": "3h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX739", "departure_time": "11:15", "arrival_time": "15:05", "duration": "3h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX791", "departure_time": "11:50", "arrival_time": "15:40", "duration": "3h 50m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX635", "departure_time": "15:05", "arrival_time": "19:05", "duration": "4h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX711", "departure_time": "17:00", "arrival_time": "20:50", "duration": "3h 50m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Singapore (SIN)", "arrival_airport": "SIN", "flight_number": "CX715", "departure_time": "20:55", "arrival_time": "00:45", "duration": "3h 50m", "departure_band": "Evening", "arrival_next_day": true}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX705", "departure_time": "08:00", "arrival_time": "10:00", "duration": "2h 00m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX717", "departure_time": "09:00", "arrival_time": "11:05", "duration": "2h 05m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX755", "departure_time": "09:25", "arrival_time": "11:30", "duration": "2h 05m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX653", "departure_time": "12:00", "arrival_time": "14:00", "duration": "2h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX775", "departure_time": "13:20", "arrival_time": "15:25", "duration": "2h 05m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX751", "departure_time": "14:30", "arrival_time": "16:30", "duration": "2h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX701", "departure_time": "16:05", "arrival_time": "18:00", "duration": "1h 55m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Bangkok (BKK)", "arrival_airport": "BKK", "flight_number": "CX617", "departure_time": "22:15", "arrival_time": "00:10", "duration": "1h 55m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Phuket (HKT)", "arrival_airport": "HKT", "flight_number": "CX771", "departure_time": "08:05", "arrival_time": "10:50", "duration": "2h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Phuket (HKT)", "arrival_airport": "HKT", "flight_number": "CX773", "departure_time": "14:45", "arrival_time": "17:20", "duration": "2h 35m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Manila (MNL)", "arrival_airport": "MNL", "flight_number": "CX907", "departure_time": "07:20", "arrival_time": "09:35", "duration": "2h 15m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Manila (MNL)", "arrival_airport": "MNL", "flight_number": "CX901", "departure_time": "09:00", "arrival_time": "11:20", "duration": "2h 20m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Manila (MNL)", "arrival_airport": "MNL", "flight_number": "CX919", "departure_time": "14:05", "arrival_time": "16:30", "duration": "2h 25m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Manila (MNL)", "arrival_airport": "MNL", "flight_number": "CX903", "departure_time": "16:40", "arrival_time": "19:05", "duration": "2h 25m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Manila (MNL)", "arrival_airport": "MNL", "flight_number": "CX913", "departure_time": "20:30", "arrival_time": "22:55", "duration": "2h 25m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Manila (MNL)", "arrival_airport": "MNL", "flight_number": "CX939", "departure_time": "21:55", "arrival_time": "00:15", "duration": "2h 20m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Cebu (CEB)", "arrival_airport": "CEB", "flight_number": "CX921", "departure_time": "07:55", "arrival_time": "10:50", "duration": "2h 55m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Cebu (CEB)", "arrival_airport": "CEB", "flight_number": "CX925", "departure_time": "15:20", "arrival_time": "18:10", "duration": "2h 50m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Hanoi (HAN)", "arrival_airport": "HAN", "flight_number": "CX741", "departure_time": "08:45", "arrival_time": "09:55", "duration": "1h 10m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Hanoi (HAN)", "arrival_airport": "HAN", "flight_number": "CX743", "departure_time": "16:55", "arrival_time": "18:10", "duration": "1h 15m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Ho Chi Minh City (SGN)", "arrival_airport": "SGN", "flight_number": "CX767", "departure_time": "08:20", "arrival_time": "10:05", "duration": "1h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Ho Chi Minh City (SGN)", "arrival_airport": "SGN", "flight_number": "CX769", "departure_time": "15:35", "arrival_time": "17:20", "duration": "1h 45m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Ho Chi Minh City (SGN)", "arrival_airport": "SGN", "flight_number": "CX721", "departure_time": "22:40", "arrival_time": "00:20", "duration": "1h 40m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Kuala Lumpur (KUL)", "arrival_airport": "KUL", "flight_number": "CX723", "departure_time": "08:10", "arrival_time": "12:05", "duration": "3h 55m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Kuala Lumpur (KUL)", "arrival_airport": "KUL", "flight_number": "CX725", "departure_time": "12:40", "arrival_time": "16:40", "duration": "4h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Kuala Lumpur (KUL)", "arrival_airport": "KUL", "flight_number": "CX729", "departure_time": "16:55", "arrival_time": "20:55", "duration": "4h 00m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Kuala Lumpur (KUL)", "arrival_airport": "KUL", "flight_number": "CX733", "departure_time": "21:30", "arrival_time": "01:30", "duration": "4h 00m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Penang (PEN)", "arrival_airport": "PEN", "flight_number": "CX633", "departure_time": "08:15", "arrival_time": "12:00", "duration": "3h 45m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Penang (PEN)", "arrival_airport": "PEN", "flight_number": "CX621", "departure_time": "15:30", "arrival_time": "19:10", "duration": "3h 40m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Jakarta (CGK)", "arrival_airport": "CGK", "flight_number": "CX777", "departure_time": "09:10", "arrival_time": "13:10", "duration": "4h 00m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Jakarta (CGK)", "arrival_airport": "CGK", "flight_number": "CX719", "departure_time": "15:45", "arrival_time": "19:40", "duration": "3h 55m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Jakarta (CGK)", "arrival_airport": "CGK", "flight_number": "CX797", "departure_time": "19:05", "arrival_time": "22:55", "duration": "3h 50m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Surabaya (SUB)", "arrival_airport": "SUB", "flight_number": "CX629", "departure_time": "14:30", "arrival_time": "18:15", "duration": "3h 45m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Denpasar / Bali (DPS)", "arrival_airport": "DPS", "flight_number": "CX785", "departure_time": "10:00", "arrival_time": "15:00", "duration": "5h 00m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Denpasar / Bali (DPS)", "arrival_airport": "DPS", "flight_number": "CX783", "departure_time": "12:35", "arrival_time": "17:40", "duration": "5h 05m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Phnom Penh (KTI)", "arrival_airport": "KTI", "flight_number": "CX607", "departure_time": "08:35", "arrival_time": "10:15", "duration": "1h 40m", "departure_band": "Morning", "arrival_next_day": false}, {"country": "🇸🇬 Southeast Asia", "arrival_city": "Phnom Penh (KTI)", "arrival_airport": "KTI", "flight_number": "CX655", "departure_time": "15:35", "arrival_time": "17:15", "duration": "1h 40m", "departure_band": "Afternoon", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "New Delhi (DEL)", "arrival_airport": "DEL", "flight_number": "CX665", "departure_time": "18:00", "arrival_time": "21:10", "duration": "3h 10m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "New Delhi (DEL)", "arrival_airport": "DEL", "flight_number": "CX679", "departure_time": "20:35", "arrival_time": "23:50", "duration": "3h 15m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "Mumbai (BOM)", "arrival_airport": "BOM", "flight_number": "CX683", "departure_time": "17:20", "arrival_time": "21:05", "duration": "3h 45m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "Mumbai (BOM)", "arrival_airport": "BOM", "flight_number": "CX663", "departure_time": "20:35", "arrival_time": "00:20", "duration": "3h 45m", "departure_band": "Evening", "arrival_next_day": true}, {"country": "🇮🇳 South Asia", "arrival_city": "Bengaluru (BLR)", "arrival_airport": "BLR", "flight_number": "CX623", "departure_time": "20:55", "arrival_time": "00:10", "duration": "3h 15m", "departure_band": "Evening", "arrival_next_day": true}, {"country": "🇮🇳 South Asia", "arrival_city": "Chennai (MAA)", "arrival_airport": "MAA", "flight_number": "CX651", "departure_time": "20:35", "arrival_time": "23:35", "duration": "3h 00m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "Hyderabad (HYD)", "arrival_airport": "HYD", "flight_number": "CX673", "departure_time": "22:30", "arrival_time": "01:35", "duration": "3h 05m", "departure_band": "Night", "arrival_next_day": true}, {"country": "🇮🇳 South Asia", "arrival_city": "Kathmandu (KTM)", "arrival_airport": "KTM", "flight_number": "CX603", "departure_time": "18:55", "arrival_time": "21:45", "duration": "2h 50m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "Colombo (CMB)", "arrival_airport": "CMB", "flight_number": "CX611", "departure_time": "20:35", "arrival_time": "23:30", "duration": "2h 55m", "departure_band": "Evening", "arrival_next_day": false}, {"country": "🇮🇳 South Asia", "arrival_city": "Dhaka (DAC)", "arrival_airport": "DAC", "flight_number": "CX667", "departure_time": "22:55", "arrival_time": "01:00", "duration": "2h 05m", "departure_band": "Night", "arrival_next_day": true}];
+    const $ = (id) => document.getElementById(id);
+    const searchInput = $('searchInput'), regionFilter = $('regionFilter'), airportFilter = $('airportFilter'), timeFilter = $('timeFilter');
+    const resultsBody = $('resultsBody'), tableScroll = document.querySelector('.table-scroll'), rowsPerPage = $('rowsPerPage');
+function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
+    
+    function updateRowsPerPageHeight() {
+      const value = rowsPerPage ? rowsPerPage.value : '15';
+      if (!tableScroll) return;
+      if (value === 'all') {
+        tableScroll.style.maxHeight = 'none';
+        return;
+      }
+      const rows = parseInt(value, 10) || 15;
+      const isMobile = window.matchMedia('(max-width: 620px)').matches;
+      const approxRowHeight = isMobile ? 40 : 51;
+      const headerHeight = isMobile ? 42 : 51;
+      const calculatedHeight = headerHeight + rows * approxRowHeight;
+      tableScroll.style.maxHeight = isMobile ? `min(${calculatedHeight}px, calc(100vh - 260px))` : `${calculatedHeight}px`;
+    }
+    
+    function cleanArrivalCity(city) {
+      return String(city || '').replace(/\s*\([A-Z0-9]{3}\)\s*$/,'');
+    }
+
+    function fullCountryName(country) {
+      const text = String(country || '').toLowerCase();
+      if (text.includes('china')) return 'China (Mainland)';
+      if (text.includes('japan')) return 'Japan';
+      if (text.includes('south korea')) return 'South Korea';
+      if (text.includes('taiwan')) return 'Taiwan';
+      if (text.includes('southeast asia')) return 'Southeast Asia / Singapore group';
+      if (text.includes('south asia')) return 'South Asia / India group';
+      return String(country || '');
+    }
+    function shortCountry(country) {
+      const text = String(country || '').toLowerCase();
+      if (text.includes('china')) return 'CN';
+      if (text.includes('japan')) return 'JP';
+      if (text.includes('south korea')) return 'KR';
+      if (text.includes('taiwan')) return 'TW';
+      if (text.includes('southeast asia')) return 'SG';
+      if (text.includes('south asia')) return 'IN';
+      return String(country || '').replace(/^\p{Emoji_Presentation}+\s*/u, '').split(' ')[0] || country;
+    }
+
+    unique(flights.map(f=>f.country)).forEach(v => regionFilter.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`));
+
+    function updateAirportOptions() {
+      const selectedRegion = regionFilter.value;
+      const currentAirport = airportFilter.value;
+      const airportList = unique(
+        flights
+          .filter(f => !selectedRegion || f.country === selectedRegion)
+          .map(f => f.arrival_airport)
+      );
+      airportFilter.innerHTML = '<option value="">All airports</option>';
+      airportList.forEach(v => airportFilter.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`));
+      if (currentAirport && airportList.includes(currentAirport)) {
+        airportFilter.value = currentAirport;
+      } else {
+        airportFilter.value = '';
+      }
+    }
+
+    updateAirportOptions();
+    $('heroTotal').textContent = flights.length;
+
+    function escapeHtml(str) { return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+    function searchable(f) { return `${f.country} ${f.arrival_city} ${f.arrival_airport} ${f.flight_number} ${f.departure_time} ${f.arrival_time}`.toLowerCase(); }
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      const region = regionFilter.value, airport = airportFilter.value, band = timeFilter.value;
+      const data = flights.filter(f => (!q || searchable(f).includes(q)) && (!region || f.country === region) && (!airport || f.arrival_airport === airport) && (!band || f.departure_band === band));
+      render(data);
+    }
+    function render(data) {
+      $('matchCount').textContent = data.length;
+      $('cityCount').textContent = unique(data.map(f=>f.arrival_city)).length;
+      $('airportCount').textContent = unique(data.map(f=>f.arrival_airport)).length;
+      $('nextDayCount').textContent = data.filter(f=>f.arrival_next_day).length;
+      resultsBody.innerHTML = data.map(f => `<tr>
+        <td><span class="country-code" title="${escapeHtml(shortCountry(f.country) + ' = ' + fullCountryName(f.country))}">${escapeHtml(shortCountry(f.country))}</span></td>
+        <td><strong>${escapeHtml(cleanArrivalCity(f.arrival_city))}</strong></td>
+        <td><span class="pill">${escapeHtml(f.arrival_airport)}</span></td>
+        <td class="flight">${escapeHtml(f.flight_number)}</td>
+        <td>${escapeHtml(f.departure_time)} <span class="hint">${escapeHtml(f.departure_band)}</span></td>
+        <td>${escapeHtml(f.arrival_time)}${f.arrival_next_day ? ' <span class="pill">+1</span>' : ''}</td>
+        <td>${escapeHtml(f.duration)}</td>
+      </tr>`).join('');
+      $('emptyState').style.display = data.length ? 'none' : 'block';
+      updateRowsPerPageHeight();
+    }
+
+    ['input','change'].forEach(evt => {
+      searchInput.addEventListener(evt, applyFilters);
+      regionFilter.addEventListener(evt, () => { updateAirportOptions(); applyFilters(); });
+      airportFilter.addEventListener(evt, applyFilters);
+      timeFilter.addEventListener(evt, applyFilters);
+      if (rowsPerPage) rowsPerPage.addEventListener(evt, updateRowsPerPageHeight);
+    });
+    $('resetBtn').addEventListener('click', () => { searchInput.value=''; regionFilter.value=''; airportFilter.value=''; timeFilter.value=''; updateAirportOptions(); applyFilters(); });
+    applyFilters();
+    updateRowsPerPageHeight();
+    window.addEventListener('resize', updateRowsPerPageHeight);
+  </script>
+</body>
+</html>
