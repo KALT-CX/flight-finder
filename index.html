@@ -41,7 +41,7 @@
       display:flex; align-items:center; justify-content:space-between; gap:20px;
     }
 
-    .brand { display:flex; align-items:center; gap:14px; font-weight:700; letter-spacing:.02em; color:var(--jade); min-width:0; }
+    .brand { display:flex; align-items:center; gap:14px; font-weight:700; letter-spacing:.02em; color:var(--jade); min-width:0; background:transparent; }
     .brand-logo {
       display:block;
       height:clamp(30px, 5vw, 48px);
@@ -50,6 +50,8 @@
       object-fit:contain;
       object-position:left center;
       flex-shrink:1;
+      background:transparent;
+      mix-blend-mode:multiply;
     }
     .brand-title {
       white-space:nowrap;
