@@ -74,7 +74,7 @@
       padding-left:14px;
       line-height:1;
     }
-.navlinks { display:flex; gap:24px; color:var(--muted); font-size:14px; }
+	.navlinks { display:flex; gap:24px; color:var(--muted); font-size:14px; }
     .hero { max-width:1180px; margin:0 auto; padding:clamp(16px, 3vw, 28px) clamp(16px, 3vw, 24px) clamp(12px, 2vw, 18px); }
     .hero-card {
       display:grid; grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr); gap:22px;
@@ -119,9 +119,9 @@
     .table-tools label { white-space:nowrap; }
     .table-tools select { width:auto; min-width:86px; padding:7px 9px; border-radius:10px; font-size:13px; }
 
-.table-wrap { background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,.05); }
+	.table-wrap { background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,.05); }
     .table-scroll { max-height:561px; overflow:auto; }
-table { width:100%; border-collapse:collapse; }
+	table { width:100%; border-collapse:collapse; }
     th, td { padding:16px; text-align:left; border-bottom:1px solid #edf2f1; font-size:14px; }
     th { background:#f4faf9; color:#33585b; font-size:12px; text-transform:uppercase; letter-spacing:.08em; position:sticky; top:0; z-index:5; }
     tr:hover td { background:#fbf7ef; }
@@ -308,7 +308,7 @@ table { width:100%; border-collapse:collapse; }
           <select id="regionFilter"><option value="">All regions</option></select>
           <select id="airportFilter"><option value="">All airports</option></select>
           <select id="timeFilter">
-            <option value="">Any departure time</option>
+            <option value="">Any duty start</option>
             <option>Morning</option><option>Afternoon</option><option>Evening</option><option>Night</option>
           </select>
           <button id="resetBtn">Reset</button>
@@ -343,9 +343,9 @@ table { width:100%; border-collapse:collapse; }
           <table>
             <thead>
               <tr>
-                <th>Arrival City</th><th>Airport</th><th>Flight</th><th>Departure</th><th>Arrival</th><th>Duration</th>
+                <th>Arrival City</th><th>Airport</th><th>Flight</th><th>Duty start</th><th>Duty end</th><th>Duty duration</th>
               </tr>
-</thead>
+			</thead>
             <tbody id="resultsBody"></tbody>
           </table>
         </div>
@@ -353,18 +353,18 @@ table { width:100%; border-collapse:collapse; }
         <div class="empty" id="emptyState" style="display:none;">No matching flights found. Try a broader search.</div>
       </div>
       <div class="note">Design note: this is a CX-inspired internal demo page, not an official Cathay Pacific website.</div>
+      <div class="note">Data source: flights.json.</div>
     </section>
   </main>
-
-  <footer>Data source: flights.json. Static GitHub Pages ready.</footer>
+  
   <div class="toast" id="copyToast" role="status" aria-live="polite"></div>
 
   <script>
     let flights = [];
-     const $ = (id) => document.getElementById(id);
+    const $ = (id) => document.getElementById(id);
     const searchInput = $('searchInput'), regionFilter = $('regionFilter'), countryFilter = $('countryFilter'), airportFilter = $('airportFilter'), timeFilter = $('timeFilter');
     const resultsBody = $('resultsBody'), tableScroll = document.querySelector('.table-scroll'), rowsPerPage = $('rowsPerPage'), selectedCountryLabel = $('selectedCountryLabel'), activeFilters = $('activeFilters'), loadingState = $('loadingState'), copyToast = $('copyToast');
-function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
+	function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
     
     function updateRowsPerPageHeight() {
       const value = rowsPerPage ? rowsPerPage.value : '10';
@@ -385,7 +385,45 @@ function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.lo
       return String(city || '').replace(/\s*\([A-Z0-9]{3}\)\s*$/,'');
     }
 
-    function fullCountryName(country) {
+        function minutesFromTime(value) {
+      const parts = String(value || '00:00').split(':').map(Number);
+      return ((parts[0] || 0) * 60) + (parts[1] || 0);
+    }
+    function formatMinutes(totalMinutes) {
+      const wrapped = ((totalMinutes % 1440) + 1440) % 1440;
+      const hours = String(Math.floor(wrapped / 60)).padStart(2, '0');
+      const minutes = String(wrapped % 60).padStart(2, '0');
+      return `${hours}:${minutes}`;
+    }
+    function formatDuration(totalMinutes) {
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+      return `${hours}h ${String(minutes).padStart(2, '0')}m`;
+    }
+    function timeBandFromMinutes(totalMinutes) {
+      const mins = ((totalMinutes % 1440) + 1440) % 1440;
+      if (mins >= 360 && mins < 720) return 'Morning';
+      if (mins >= 720 && mins < 1080) return 'Afternoon';
+      if (mins >= 1080 && mins < 1320) return 'Evening';
+      return 'Night';
+    }
+    function enrichDutyTimes(record) {
+      const departureMinutes = minutesFromTime(record.departure_time);
+      const arrivalBaseMinutes = minutesFromTime(record.arrival_time) + (record.arrival_next_day ? 1440 : 0);
+      let dutyStartAbsolute = departureMinutes - 85;
+      let dutyEndAbsolute = arrivalBaseMinutes + 30;
+      while (dutyEndAbsolute <= dutyStartAbsolute) dutyEndAbsolute += 1440;
+      return {
+        ...record,
+        duty_start_time: formatMinutes(dutyStartAbsolute),
+        duty_end_time: formatMinutes(dutyEndAbsolute),
+        duty_duration: formatDuration(dutyEndAbsolute - dutyStartAbsolute),
+        duty_start_band: timeBandFromMinutes(dutyStartAbsolute),
+        duty_start_previous_day: dutyStartAbsolute < 0,
+        duty_end_next_day: dutyEndAbsolute >= 1440
+      };
+    }
+function fullCountryName(country) {
       const text = String(country || '').toLowerCase();
       if (text.includes('china')) return 'China (Mainland)';
       if (text.includes('japan')) return 'Japan';
@@ -404,6 +442,7 @@ function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.lo
       if (text.includes('bangladesh')) return 'Bangladesh';
       return String(country || '');
     }
+	
     function shortCountry(country) {
       const text = String(country || '').toLowerCase();
       if (text.includes('china')) return 'CN';
@@ -423,6 +462,7 @@ function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.lo
       if (text.includes('bangladesh')) return 'BD';
       return String(country || '').replace(/^\p{Emoji_Presentation}+\s*/u, '').split(' ')[0] || country;
     }
+	
     function regionCode(country) {
       const text = String(country || '').toLowerCase();
       if (text.includes('china')) return 'CN';
@@ -433,6 +473,7 @@ function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.lo
       if (['india','nepal','sri lanka','bangladesh'].some(v => text.includes(v))) return 'SA';
       return shortCountry(country);
     }
+	
     function regionName(code) {
       return ({
         CN:'China (Mainland)', JP:'Japan', KR:'South Korea', TW:'Taiwan',
@@ -453,7 +494,8 @@ function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.lo
         unique(flights.map(f => f.country)).forEach(v => countryFilter.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(v)}">${escapeHtml(shortCountry(v))} · ${escapeHtml(fullCountryName(v))}</option>`));
       }
     }
-function updateAirportOptions() {
+	
+	function updateAirportOptions() {
       const selectedRegion = regionFilter.value;
       const countryFilter = $('countryFilter');
       const selectedCountry = countryFilter ? countryFilter.value : '';
@@ -472,10 +514,9 @@ function updateAirportOptions() {
       }
     }
 
-
-
     function escapeHtml(str) { return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
-    function searchable(f) { return `${f.country} ${regionCode(f.country)} ${regionName(regionCode(f.country))} ${f.arrival_city} ${f.arrival_airport} ${f.flight_number} ${f.departure_time} ${f.arrival_time}`.toLowerCase(); }
+    
+	function searchable(f) { return `${f.country} ${regionCode(f.country)} ${regionName(regionCode(f.country))} ${f.arrival_city} ${f.arrival_airport} ${f.flight_number} ${f.duty_start_time || f.departure_time} ${f.duty_end_time || f.arrival_time} ${f.duty_duration || f.duration}`.toLowerCase(); }
 
     function updateSelectedCountryLabel() {
       if (!selectedCountryLabel) return;
@@ -496,11 +537,13 @@ function updateAirportOptions() {
       clearTimeout(showToast._timer);
       showToast._timer = setTimeout(() => copyToast.classList.remove('show'), 1500);
     }
+	
     function setLoading(isLoading) {
       if (!loadingState || !resultsBody) return;
       loadingState.style.display = isLoading ? 'flex' : 'none';
       resultsBody.style.opacity = isLoading ? '.35' : '1';
     }
+	
     function updateActiveFilters(q, region, airport, band) {
       if (!activeFilters) return;
       const chips = [];
@@ -526,6 +569,7 @@ function updateAirportOptions() {
         searchInput.value=''; regionFilter.value=''; if (countryFilter) countryFilter.value=''; airportFilter.value=''; timeFilter.value=''; updateAirportOptions(); applyFilters();
       });
     }
+	
     async function copyText(value, element) {
       if (!value) return;
       try {
@@ -551,15 +595,17 @@ function updateAirportOptions() {
         alert(`Unable to copy: ${value}`);
       }
     }
+	
     function applyFilters() {
       updateSelectedCountryLabel();
       const q = searchInput.value.trim().toLowerCase();
       const region = regionFilter.value, country = countryFilter ? countryFilter.value : '', airport = airportFilter.value, band = timeFilter.value;
       updateActiveFilters(q, region, airport, band);
       setLoading(true);
-      const data = flights.filter(f => (!q || searchable(f).includes(q)) && (!region || regionCode(f.country) === region) && (!country || f.country === country) && (!airport || f.arrival_airport === airport) && (!band || f.departure_band === band));
+      const data = flights.filter(f => (!q || searchable(f).includes(q)) && (!region || regionCode(f.country) === region) && (!country || f.country === country) && (!airport || f.arrival_airport === airport) && (!band || (f.duty_start_band || f.departure_band) === band));
       window.setTimeout(() => { render(data); setLoading(false); }, 120);
     }
+	
     function render(data) {
       $('matchCount').textContent = data.length;
       $('cityCount').textContent = unique(data.map(f=>f.arrival_city)).length;
@@ -578,13 +624,13 @@ function updateAirportOptions() {
             <div class="mobile-main-row">
               <div class="mobile-meta-row">
                 <span class="mobile-flight-primary copy-value" data-copy="${escapeHtml(f.flight_number)}" title="Click to copy flight number">${escapeHtml(f.flight_number)}</span>
-                <span class="mobile-duration">${escapeHtml(f.duration)}</span>
-                <span class="pill">${escapeHtml(f.departure_band)}</span>
+                <span class="mobile-duration">${escapeHtml(f.duty_duration || f.duration)}</span>
+                <span class="pill">${escapeHtml(f.duty_start_band || f.departure_band)}</span>
               </div>
-              <div class="mobile-times-inline" aria-label="Departure and arrival time">
-                <span class="mobile-time-pair"><span class="mobile-time-label">Depart</span><span class="mobile-time-value">${escapeHtml(f.departure_time)}</span></span>
+              <div class="mobile-times-inline" aria-label="Duty start and duty end time">
+                <span class="mobile-time-pair"><span class="mobile-time-label">Duty start</span><span class="mobile-time-value">${escapeHtml(f.duty_start_time || f.departure_time)}</span></span>
                 <span class="mobile-arrow">→</span>
-                <span class="mobile-time-pair"><span class="mobile-time-label">Arrive</span><span class="mobile-time-value">${escapeHtml(f.arrival_time)}${f.arrival_next_day ? ' <span class="pill mobile-nextday">+1</span>' : ''}</span></span>
+                <span class="mobile-time-pair"><span class="mobile-time-label">Duty end</span><span class="mobile-time-value">${escapeHtml(f.duty_end_time || f.arrival_time)}${f.duty_end_next_day ? ' <span class="pill mobile-nextday">+1</span>' : ''}</span></span>
               </div>
             </div>
           </article>
@@ -592,9 +638,9 @@ function updateAirportOptions() {
         <td class="desktop-cell"><strong>${escapeHtml(cleanArrivalCity(f.arrival_city))}</strong></td>
         <td class="desktop-cell"><span class="pill copy-value" data-copy="${escapeHtml(f.arrival_airport)}" title="Click to copy airport code">${escapeHtml(f.arrival_airport)}</span></td>
         <td class="desktop-cell"><span class="flight copy-value" data-copy="${escapeHtml(f.flight_number)}" title="Click to copy flight number">${escapeHtml(f.flight_number)}</span></td>
-        <td class="desktop-cell">${escapeHtml(f.departure_time)} <span class="hint">${escapeHtml(f.departure_band)}</span></td>
-        <td class="desktop-cell">${escapeHtml(f.arrival_time)}${f.arrival_next_day ? ' <span class="pill">+1</span>' : ''}</td>
-        <td class="desktop-cell">${escapeHtml(f.duration)}</td>
+        <td class="desktop-cell">${escapeHtml(f.duty_start_time || f.departure_time)} <span class="hint">${escapeHtml(f.duty_start_band || f.departure_band)}</span></td>
+        <td class="desktop-cell">${escapeHtml(f.duty_end_time || f.arrival_time)}${f.duty_end_next_day ? ' <span class="pill">+1</span>' : ''}</td>
+        <td class="desktop-cell">${escapeHtml(f.duty_duration || f.duration)}</td>
       </tr>`).join('');
       $('emptyState').style.display = data.length ? 'none' : 'block';
       updateRowsPerPageHeight();
@@ -613,13 +659,15 @@ function updateAirportOptions() {
       const target = event.target.closest('.copy-value');
       if (target) copyText(target.dataset.copy || target.textContent.trim(), target);
     });
+	
     $('resetBtn').addEventListener('click', () => { searchInput.value=''; regionFilter.value=''; if (countryFilter) countryFilter.value=''; airportFilter.value=''; timeFilter.value=''; updateAirportOptions(); applyFilters(); });
-    async function loadFlightsData() {
+    
+	async function loadFlightsData() {
       setLoading(true);
       try {
         const response = await fetch('flights.json?v=' + Date.now(), { cache: 'no-store' });
         if (!response.ok) throw new Error(`Unable to load flights.json (${response.status})`);
-        flights = await response.json();
+        flights = (await response.json()).map(enrichDutyTimes);
         populateFilters();
         updateAirportOptions();
         $('heroTotal').textContent = flights.length;
@@ -635,6 +683,7 @@ function updateAirportOptions() {
         updateRowsPerPageHeight();
       }
     }
+	
     loadFlightsData();
     window.addEventListener('resize', updateRowsPerPageHeight);
   </script>
