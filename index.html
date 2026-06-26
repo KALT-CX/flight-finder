@@ -120,7 +120,7 @@
     .table-tools select { width:auto; min-width:86px; padding:7px 9px; border-radius:10px; font-size:13px; }
 
 .table-wrap { background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,.05); }
-    .table-scroll { max-height:820px; overflow:auto; }
+    .table-scroll { max-height:561px; overflow:auto; }
 table { width:100%; border-collapse:collapse; }
     th, td { padding:16px; text-align:left; border-bottom:1px solid #edf2f1; font-size:14px; }
     th { background:#f4faf9; color:#33585b; font-size:12px; text-transform:uppercase; letter-spacing:.08em; position:sticky; top:0; z-index:5; }
@@ -325,12 +325,12 @@ table { width:100%; border-collapse:collapse; }
     <section class="content">
 
       <div class="section-head">
-        <div class="title-stack"><h2>Flight timetable <span id="selectedCountryLabel" class="selected-country-badge">All regions</span></h2><div class="last-updated" id="lastUpdated">Last updated: 25 Jun 2026, 12:56 HKT</div></div>
+        <div class="title-stack"><h2>Flight timetable</h2><div class="last-updated" id="lastUpdated">Last updated: 25 Jun 2026, 12:56 HKT</div></div>
         <div class="table-tools">
           <label for="rowsPerPage">Display rows</label>
           <select id="rowsPerPage">
-            <option value="10">10</option>
-            <option value="15" selected>15</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="all">All</option>
@@ -367,13 +367,13 @@ table { width:100%; border-collapse:collapse; }
 function unique(arr) { return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
     
     function updateRowsPerPageHeight() {
-      const value = rowsPerPage ? rowsPerPage.value : '15';
+      const value = rowsPerPage ? rowsPerPage.value : '10';
       if (!tableScroll) return;
       if (value === 'all') {
         tableScroll.style.maxHeight = 'none';
         return;
       }
-      const rows = parseInt(value, 10) || 15;
+      const rows = parseInt(value, 10) || 10;
       const isMobile = window.matchMedia('(max-width: 620px)').matches;
       const approxRowHeight = isMobile ? 92 : 51;
       const headerHeight = isMobile ? 0 : 51;
