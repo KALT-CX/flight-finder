@@ -1,0 +1,11 @@
+{
+  "name": "cx-flight-finder-data-updater",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update-flights": "node scripts/update-flights.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
