@@ -862,36 +862,38 @@
       return String(country || '').replace(/^\p{Emoji_Presentation}+\s*/u, '').split(' ')[0] || country;
     }
 
-    function regionCode(country) {
+    function regionCode(country, explicitRegion = '') {
+      if (explicitRegion) return explicitRegion;
       const text = String(country || '').toLowerCase();
-
       if (text.includes('china')) return 'CN';
       if (text.includes('japan')) return 'JP';
       if (text.includes('south korea')) return 'KR';
       if (text.includes('taiwan')) return 'TW';
       if (['singapore', 'thailand', 'philippines', 'vietnam', 'malaysia', 'indonesia', 'cambodia'].some((name) => text.includes(name))) return 'SEA';
       if (['india', 'nepal', 'sri lanka', 'bangladesh'].some((name) => text.includes(name))) return 'SA';
-      return shortCountry(country);
+      if (['united kingdom', 'france', 'germany', 'netherlands', 'switzerland', 'spain', 'italy', 'finland', 'belgium'].some((name) => text.includes(name))) return 'EU';
+      if (['united states', 'canada'].some((name) => text.includes(name))) return 'NA';
+      if (['australia', 'new zealand'].some((name) => text.includes(name))) return 'OC';
+      if (['united arab emirates', 'qatar', 'saudi arabia', 'israel', 'bahrain'].some((name) => text.includes(name))) return 'ME';
+      if (text.includes('south africa')) return 'AF';
+      return 'OTHER';
     }
 
     function regionName(code) {
       const names = {
-        CN: 'China (Mainland)',
-        JP: 'Japan',
-        KR: 'South Korea',
-        TW: 'Taiwan',
-        SEA: 'Southeast Asia',
-        SA: 'South Asia'
+        CN: 'China (Mainland)', JP: 'Japan', KR: 'South Korea', TW: 'Taiwan',
+        SEA: 'Southeast Asia', SA: 'South Asia', EU: 'Europe',
+        NA: 'North America', OC: 'Oceania', ME: 'Middle East',
+        AF: 'Africa', OTHER: 'Other'
       };
-
       return names[code] || code || 'All regions';
     }
 
     function populateFilters() {
       regionFilter.innerHTML = '<option value="">All regions</option>';
 
-      ['CN', 'JP', 'KR', 'TW', 'SEA', 'SA']
-        .filter((code) => flights.some((flight) => regionCode(flight.country) === code))
+      ['CN', 'JP', 'KR', 'TW', 'SEA', 'SA', 'EU', 'NA', 'OC', 'ME', 'AF', 'OTHER']
+        .filter((code) => flights.some((flight) => regionCode(flight.country, flight.region) === code))
         .forEach((code) => {
           regionFilter.insertAdjacentHTML(
             'beforeend',
@@ -916,7 +918,7 @@
       const currentAirport = airportFilter.value;
       const airportList = unique(
         flights
-          .filter((flight) => (!selectedRegion || regionCode(flight.country) === selectedRegion) && (!selectedCountry || flight.country === selectedCountry))
+          .filter((flight) => (!selectedRegion || regionCode(flight.country, flight.region) === selectedRegion) && (!selectedCountry || flight.country === selectedCountry))
           .map((flight) => flight.arrival_airport)
       );
 
@@ -929,7 +931,7 @@
     }
 
     function searchable(flight) {
-      return `${flight.country} ${regionCode(flight.country)} ${regionName(regionCode(flight.country))} ${flight.arrival_city} ${flight.arrival_airport} ${flight.flight_number} ${flight.duty_start_time || flight.departure_time} ${flight.duty_end_time || flight.arrival_time} ${flight.duty_duration || flight.duration}`.toLowerCase();
+      return `${flight.country} ${regionCode(flight.country, flight.region)} ${regionName(regionCode(flight.country, flight.region))} ${flight.arrival_city} ${flight.arrival_airport} ${flight.flight_number} ${flight.duty_start_time || flight.departure_time} ${flight.duty_end_time || flight.arrival_time} ${flight.duty_duration || flight.duration}`.toLowerCase();
     }
 
     function showToast(message) {
@@ -1037,7 +1039,7 @@
 
       const data = flights.filter((flight) =>
         (!q || searchable(flight).includes(q)) &&
-        (!region || regionCode(flight.country) === region) &&
+        (!region || regionCode(flight.country, flight.region) === region) &&
         (!country || flight.country === country) &&
         (!airport || flight.arrival_airport === airport) &&
         (!band || (flight.duty_start_band || flight.departure_band) === band)
