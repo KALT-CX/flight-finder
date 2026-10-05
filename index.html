@@ -803,20 +803,22 @@
 
     function enrichDutyTimes(record) {
       const departureMinutes = minutesFromTime(record.departure_time);
-      const arrivalBaseMinutes = minutesFromTime(record.arrival_time) + (record.arrival_next_day ? 1440 : 0);
-      let dutyStartAbsolute = departureMinutes - 85;
-      let dutyEndAbsolute = arrivalBaseMinutes + 30;
-
-      while (dutyEndAbsolute <= dutyStartAbsolute) dutyEndAbsolute += 1440;
+      const arrivalMinutes = minutesFromTime(record.arrival_time);
+      const dutyStartAbsolute = departureMinutes - 85;
+      const arrivalDayOffset = Number(record.arrival_day_offset ?? (record.arrival_next_day ? 1 : 0));
+      const dutyEndLocalAbsolute = arrivalMinutes + 30;
+      const dutyDurationMinutes = Number(record.duty_duration_minutes || 0) ||
+        (Number(record.flight_duration_minutes || 0) + 115);
 
       return {
         ...record,
         duty_start_time: formatMinutes(dutyStartAbsolute),
-        duty_end_time: formatMinutes(dutyEndAbsolute),
-        duty_duration: formatDuration(dutyEndAbsolute - dutyStartAbsolute),
+        duty_end_time: formatMinutes(dutyEndLocalAbsolute),
+        duty_duration: dutyDurationMinutes > 0 ? formatDuration(dutyDurationMinutes) : record.duration,
         duty_start_band: timeBandFromMinutes(dutyStartAbsolute),
         duty_start_previous_day: dutyStartAbsolute < 0,
-        duty_end_next_day: dutyEndAbsolute >= 1440
+        duty_end_next_day: arrivalDayOffset > 0 || dutyEndLocalAbsolute >= 1440,
+        duty_end_day_offset: arrivalDayOffset + (dutyEndLocalAbsolute >= 1440 ? 1 : 0)
       };
     }
 
@@ -869,24 +871,19 @@
       if (text.includes('japan')) return 'JP';
       if (text.includes('south korea')) return 'KR';
       if (text.includes('taiwan')) return 'TW';
-      if (['singapore', 'thailand', 'philippines', 'vietnam', 'malaysia', 'indonesia', 'cambodia'].some((name) => text.includes(name))) return 'SEA';
-      if (['india', 'nepal', 'sri lanka', 'bangladesh'].some((name) => text.includes(name))) return 'SA';
-      if (['united kingdom', 'france', 'germany', 'netherlands', 'switzerland', 'spain', 'italy', 'finland', 'belgium'].some((name) => text.includes(name))) return 'EU';
-      if (['united states', 'canada'].some((name) => text.includes(name))) return 'NA';
-      if (['australia', 'new zealand'].some((name) => text.includes(name))) return 'OC';
-      if (['united arab emirates', 'qatar', 'saudi arabia', 'israel', 'bahrain'].some((name) => text.includes(name))) return 'ME';
+      if (['singapore','thailand','philippines','vietnam','malaysia','indonesia','cambodia'].some(x => text.includes(x))) return 'SEA';
+      if (['india','nepal','sri lanka','bangladesh'].some(x => text.includes(x))) return 'SA';
+      if (['united kingdom','france','germany','netherlands','switzerland','spain','italy','finland','belgium'].some(x => text.includes(x))) return 'EU';
+      if (['united states','canada'].some(x => text.includes(x))) return 'NA';
+      if (['australia','new zealand'].some(x => text.includes(x))) return 'OC';
+      if (['united arab emirates','qatar','saudi arabia','israel','bahrain'].some(x => text.includes(x))) return 'ME';
       if (text.includes('south africa')) return 'AF';
       return 'OTHER';
     }
 
     function regionName(code) {
-      const names = {
-        CN: 'China (Mainland)', JP: 'Japan', KR: 'South Korea', TW: 'Taiwan',
-        SEA: 'Southeast Asia', SA: 'South Asia', EU: 'Europe',
-        NA: 'North America', OC: 'Oceania', ME: 'Middle East',
-        AF: 'Africa', OTHER: 'Other'
-      };
-      return names[code] || code || 'All regions';
+      return ({ CN:'China (Mainland)', JP:'Japan', KR:'South Korea', TW:'Taiwan', SEA:'Southeast Asia',
+        SA:'South Asia', EU:'Europe', NA:'North America', OC:'Oceania', ME:'Middle East', AF:'Africa', OTHER:'Other' })[code] || code || 'All regions';
     }
 
     function populateFilters() {
@@ -1139,6 +1136,28 @@
         if (!response.ok) throw new Error(`Unable to load flights.json (${response.status})`);
 
         flights = (await response.json()).map(enrichDutyTimes);
+
+        let updatedAt = response.headers.get('Last-Modified');
+        try {
+          const metaResponse = await fetch('flights-meta.json?v=' + Date.now(), { cache: 'no-store' });
+          if (metaResponse.ok) {
+            const meta = await metaResponse.json();
+            if (meta.updated_at) updatedAt = meta.updated_at;
+          }
+        } catch (metaError) {
+          console.info('flights-meta.json is not available; using HTTP Last-Modified.', metaError);
+        }
+
+        if (updatedAt) {
+          const updatedDate = new Date(updatedAt);
+          $('lastUpdated').textContent = `Data updated: ${updatedDate.toLocaleString('en-GB', {
+            timeZone: 'Asia/Hong_Kong', day: '2-digit', month: 'short', year: 'numeric',
+            hour: '2-digit', minute: '2-digit', hour12: false
+          })} HKT`;
+        } else {
+          $('lastUpdated').textContent = 'Data update time unavailable';
+        }
+
         populateFilters();
         updateAirportOptions();
         $('heroTotal').textContent = flights.length;

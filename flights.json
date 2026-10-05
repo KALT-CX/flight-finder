@@ -7,9 +7,12 @@
     "flight_number": "CX261",
     "departure_time": "00:05",
     "arrival_time": "07:55",
-    "duration": "7h 50m",
+    "duration": "13h 50m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 830,
+    "duty_duration_minutes": 945,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -19,9 +22,12 @@
     "flight_number": "CX880",
     "departure_time": "00:05",
     "arrival_time": "22:00",
-    "duration": "21h 55m",
+    "duration": "12h 55m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 775,
+    "duty_duration_minutes": 890,
+    "arrival_day_offset": -1
   },
   {
     "country": "🇦🇺 Australia",
@@ -31,9 +37,12 @@
     "flight_number": "CX165",
     "departure_time": "00:15",
     "arrival_time": "10:50",
-    "duration": "10h 35m",
+    "duration": "8h 35m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 515,
+    "duty_duration_minutes": 630,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -43,9 +52,12 @@
     "flight_number": "CX105",
     "departure_time": "00:20",
     "arrival_time": "12:15",
-    "duration": "11h 55m",
+    "duration": "8h 55m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 535,
+    "duty_duration_minutes": 650,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇭 Switzerland",
@@ -55,9 +67,12 @@
     "flight_number": "CX383",
     "departure_time": "00:25",
     "arrival_time": "07:30",
-    "duration": "7h 05m",
+    "duration": "13h 05m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 785,
+    "duty_duration_minutes": 900,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇪🇸 Spain",
@@ -67,9 +82,12 @@
     "flight_number": "CX321",
     "departure_time": "00:45",
     "arrival_time": "08:35",
-    "duration": "7h 50m",
+    "duration": "13h 50m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 830,
+    "duty_duration_minutes": 945,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇧🇪 Belgium",
@@ -79,9 +97,12 @@
     "flight_number": "CX275",
     "departure_time": "00:45",
     "arrival_time": "08:25",
-    "duration": "7h 40m",
+    "duration": "13h 40m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 820,
+    "duty_duration_minutes": 935,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇪🇸 Spain",
@@ -91,9 +112,12 @@
     "flight_number": "CX315",
     "departure_time": "00:45",
     "arrival_time": "09:15",
-    "duration": "8h 30m",
+    "duration": "14h 30m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 870,
+    "duty_duration_minutes": 985,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -103,9 +127,12 @@
     "flight_number": "CX181",
     "departure_time": "00:45",
     "arrival_time": "12:45",
-    "duration": "12h 00m",
+    "duration": "9h 00m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 540,
+    "duty_duration_minutes": 655,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇦 Canada",
@@ -115,9 +142,12 @@
     "flight_number": "CX888",
     "departure_time": "00:45",
     "arrival_time": "21:25",
-    "duration": "20h 40m",
+    "duration": "11h 40m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 700,
+    "duty_duration_minutes": 815,
+    "arrival_day_offset": -1
   },
   {
     "country": "🇮🇹 Italy",
@@ -127,9 +157,12 @@
     "flight_number": "CX233",
     "departure_time": "00:50",
     "arrival_time": "08:00",
-    "duration": "7h 10m",
+    "duration": "13h 10m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 790,
+    "duty_duration_minutes": 905,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇬🇧 United Kingdom",
@@ -139,9 +172,12 @@
     "flight_number": "CX259",
     "departure_time": "00:55",
     "arrival_time": "08:15",
-    "duration": "7h 20m",
+    "duration": "14h 20m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 860,
+    "duty_duration_minutes": 975,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇩🇪 Germany",
@@ -151,9 +187,12 @@
     "flight_number": "CX301",
     "departure_time": "01:00",
     "arrival_time": "08:05",
-    "duration": "7h 05m",
+    "duration": "13h 05m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 785,
+    "duty_duration_minutes": 900,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇹 Italy",
@@ -163,9 +202,12 @@
     "flight_number": "CX293",
     "departure_time": "01:05",
     "arrival_time": "08:05",
-    "duration": "7h 00m",
+    "duration": "13h 00m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 780,
+    "duty_duration_minutes": 895,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇿🇦 South Africa",
@@ -175,9 +217,12 @@
     "flight_number": "CX749",
     "departure_time": "01:05",
     "arrival_time": "07:45",
-    "duration": "6h 40m",
+    "duration": "12h 40m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 760,
+    "duty_duration_minutes": 875,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇿🇦 South Africa",
@@ -187,9 +232,12 @@
     "flight_number": "CX749",
     "departure_time": "01:05",
     "arrival_time": "07:55",
-    "duration": "6h 50m",
+    "duration": "12h 50m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 770,
+    "duty_duration_minutes": 885,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -199,9 +247,12 @@
     "flight_number": "CX872",
     "departure_time": "01:10",
     "arrival_time": "22:40",
-    "duration": "21h 30m",
+    "duration": "12h 30m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 750,
+    "duty_duration_minutes": 865,
+    "arrival_day_offset": -1
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -213,7 +264,10 @@
     "duration": "1h 05m",
     "departure_band": "Night",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 65,
+    "duty_duration_minutes": 180,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -234,10 +288,13 @@
     "flight_number": "CX524",
     "departure_time": "01:20",
     "arrival_time": "06:50",
-    "duration": "5h 30m",
+    "duration": "4h 30m",
     "departure_band": "Night",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 270,
+    "duty_duration_minutes": 385,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -249,7 +306,10 @@
     "duration": "3h 45m",
     "departure_band": "Night",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -258,10 +318,13 @@
     "flight_number": "CX566",
     "departure_time": "01:55",
     "arrival_time": "06:40",
-    "duration": "4h 45m",
+    "duration": "3h 45m",
     "departure_band": "Night",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -271,9 +334,12 @@
     "flight_number": "CX844",
     "departure_time": "02:25",
     "arrival_time": "06:00",
-    "duration": "3h 35m",
+    "duration": "15h 35m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 935,
+    "duty_duration_minutes": 1050,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇦 Canada",
@@ -283,9 +349,12 @@
     "flight_number": "CX820",
     "departure_time": "02:50",
     "arrival_time": "05:45",
-    "duration": "2h 55m",
+    "duration": "14h 55m",
     "departure_band": "Night",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 895,
+    "duty_duration_minutes": 1010,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -297,7 +366,10 @@
     "duration": "1h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 105,
+    "duty_duration_minutes": 220,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -309,7 +381,10 @@
     "duration": "2h 15m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 135,
+    "duty_duration_minutes": 250,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -321,7 +396,10 @@
     "duration": "3h 20m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 200,
+    "duty_duration_minutes": 315,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -333,7 +411,10 @@
     "duration": "2h 25m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 145,
+    "duty_duration_minutes": 260,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -345,7 +426,10 @@
     "duration": "1h 05m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 65,
+    "duty_duration_minutes": 180,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -357,7 +441,10 @@
     "duration": "2h 55m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 175,
+    "duty_duration_minutes": 290,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇰🇷 South Korea",
@@ -366,10 +453,13 @@
     "flight_number": "CX434",
     "departure_time": "07:55",
     "arrival_time": "12:40",
-    "duration": "4h 45m",
+    "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "KR"
+    "region": "KR",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -378,10 +468,13 @@
     "flight_number": "CX705",
     "departure_time": "08:00",
     "arrival_time": "10:00",
-    "duration": "2h 00m",
+    "duration": "3h 00m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 180,
+    "duty_duration_minutes": 295,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -393,7 +486,10 @@
     "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -405,7 +501,10 @@
     "duration": "1h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 110,
+    "duty_duration_minutes": 225,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -414,10 +513,13 @@
     "flight_number": "CX771",
     "departure_time": "08:05",
     "arrival_time": "10:50",
-    "duration": "2h 45m",
+    "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇬🇧 United Kingdom",
@@ -427,9 +529,12 @@
     "flight_number": "CX257",
     "departure_time": "08:05",
     "arrival_time": "15:15",
-    "duration": "7h 10m",
+    "duration": "14h 10m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 850,
+    "duty_duration_minutes": 965,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -441,7 +546,10 @@
     "arrival_time": "11:00",
     "duration": "2h 50m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -450,10 +558,13 @@
     "flight_number": "CX596",
     "departure_time": "08:10",
     "arrival_time": "12:55",
-    "duration": "4h 45m",
+    "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇲🇾 Malaysia",
@@ -465,7 +576,10 @@
     "duration": "3h 55m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 235,
+    "duty_duration_minutes": 350,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -477,7 +591,10 @@
     "duration": "2h 55m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 175,
+    "duty_duration_minutes": 290,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -489,7 +606,10 @@
     "duration": "1h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 110,
+    "duty_duration_minutes": 225,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -498,10 +618,13 @@
     "flight_number": "CX512",
     "departure_time": "08:15",
     "arrival_time": "12:45",
-    "duration": "4h 30m",
+    "duration": "3h 30m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 210,
+    "duty_duration_minutes": 325,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -510,10 +633,13 @@
     "flight_number": "CX526",
     "departure_time": "08:15",
     "arrival_time": "13:40",
-    "duration": "5h 25m",
+    "duration": "4h 25m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 265,
+    "duty_duration_minutes": 380,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇲🇾 Malaysia",
@@ -525,7 +651,10 @@
     "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -537,7 +666,10 @@
     "duration": "2h 05m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 125,
+    "duty_duration_minutes": 240,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇻🇳 Vietnam",
@@ -546,10 +678,13 @@
     "flight_number": "CX767",
     "departure_time": "08:20",
     "arrival_time": "10:05",
-    "duration": "1h 45m",
+    "duration": "2h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 165,
+    "duty_duration_minutes": 280,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -561,7 +696,10 @@
     "duration": "1h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 105,
+    "duty_duration_minutes": 220,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -573,7 +711,10 @@
     "duration": "2h 10m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 130,
+    "duty_duration_minutes": 245,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -585,7 +726,10 @@
     "duration": "1h 35m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 95,
+    "duty_duration_minutes": 210,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇰🇭 Cambodia",
@@ -594,10 +738,13 @@
     "flight_number": "CX607",
     "departure_time": "08:35",
     "arrival_time": "10:15",
-    "duration": "1h 40m",
+    "duration": "2h 40m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 160,
+    "duty_duration_minutes": 275,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -609,7 +756,10 @@
     "duration": "1h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 110,
+    "duty_duration_minutes": 225,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -618,10 +768,13 @@
     "flight_number": "CX548",
     "departure_time": "08:40",
     "arrival_time": "13:55",
-    "duration": "5h 15m",
+    "duration": "4h 15m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 255,
+    "duty_duration_minutes": 370,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -633,7 +786,10 @@
     "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇻🇳 Vietnam",
@@ -642,10 +798,13 @@
     "flight_number": "CX741",
     "departure_time": "08:45",
     "arrival_time": "09:55",
-    "duration": "1h 10m",
+    "duration": "2h 10m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 130,
+    "duty_duration_minutes": 245,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇻🇳 Vietnam",
@@ -655,9 +814,12 @@
     "flight_number": "CX741",
     "departure_time": "08:45",
     "arrival_time": "09:50",
-    "duration": "1h 05m",
+    "duration": "2h 05m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 125,
+    "duty_duration_minutes": 240,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -667,9 +829,12 @@
     "flight_number": "CX139",
     "departure_time": "08:45",
     "arrival_time": "20:45",
-    "duration": "12h 00m",
+    "duration": "9h 00m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 540,
+    "duty_duration_minutes": 655,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -678,10 +843,13 @@
     "flight_number": "CX717",
     "departure_time": "09:00",
     "arrival_time": "11:05",
-    "duration": "2h 05m",
+    "duration": "3h 05m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 185,
+    "duty_duration_minutes": 300,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -693,7 +861,10 @@
     "duration": "2h 20m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 140,
+    "duty_duration_minutes": 255,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -705,7 +876,10 @@
     "duration": "3h 25m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 205,
+    "duty_duration_minutes": 320,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -717,7 +891,10 @@
     "duration": "2h 00m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 120,
+    "duty_duration_minutes": 235,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -727,9 +904,12 @@
     "flight_number": "CX830",
     "departure_time": "09:05",
     "arrival_time": "13:10",
-    "duration": "4h 05m",
+    "duration": "16h 05m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 965,
+    "duty_duration_minutes": 1080,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -738,10 +918,13 @@
     "flight_number": "CX504",
     "departure_time": "09:05",
     "arrival_time": "14:30",
-    "duration": "5h 25m",
+    "duration": "4h 25m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 265,
+    "duty_duration_minutes": 380,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇩 Indonesia",
@@ -750,10 +933,13 @@
     "flight_number": "CX777",
     "departure_time": "09:10",
     "arrival_time": "13:10",
-    "duration": "4h 00m",
+    "duration": "5h 00m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 300,
+    "duty_duration_minutes": 415,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -765,7 +951,10 @@
     "duration": "1h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 105,
+    "duty_duration_minutes": 220,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -774,10 +963,13 @@
     "flight_number": "CX580",
     "departure_time": "09:15",
     "arrival_time": "15:20",
-    "duration": "6h 05m",
+    "duration": "5h 05m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 305,
+    "duty_duration_minutes": 420,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -801,7 +993,10 @@
     "duration": "2h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 165,
+    "duty_duration_minutes": 280,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -810,10 +1005,13 @@
     "flight_number": "CX755",
     "departure_time": "09:25",
     "arrival_time": "11:30",
-    "duration": "2h 05m",
+    "duration": "3h 05m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 185,
+    "duty_duration_minutes": 300,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇰🇷 South Korea",
@@ -822,10 +1020,13 @@
     "flight_number": "CX410",
     "departure_time": "09:25",
     "arrival_time": "14:05",
-    "duration": "4h 40m",
+    "duration": "3h 40m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "KR"
+    "region": "KR",
+    "flight_duration_minutes": 220,
+    "duty_duration_minutes": 335,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -837,7 +1038,10 @@
     "duration": "1h 35m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 95,
+    "duty_duration_minutes": 210,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -849,7 +1053,10 @@
     "duration": "2h 30m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 150,
+    "duty_duration_minutes": 265,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -861,7 +1068,10 @@
     "duration": "1h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 110,
+    "duty_duration_minutes": 225,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -885,7 +1095,10 @@
     "arrival_time": "12:35",
     "duration": "2h 35m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 155,
+    "duty_duration_minutes": 270,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇩 Indonesia",
@@ -897,7 +1110,10 @@
     "duration": "5h 00m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 300,
+    "duty_duration_minutes": 415,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -918,10 +1134,13 @@
     "flight_number": "CX536",
     "departure_time": "10:10",
     "arrival_time": "15:05",
-    "duration": "4h 55m",
+    "duration": "3h 55m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 235,
+    "duty_duration_minutes": 350,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -933,7 +1152,10 @@
     "duration": "2h 00m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 120,
+    "duty_duration_minutes": 235,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -957,7 +1179,10 @@
     "duration": "3h 15m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 195,
+    "duty_duration_minutes": 310,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -966,10 +1191,13 @@
     "flight_number": "CX506",
     "departure_time": "10:25",
     "arrival_time": "15:10",
-    "duration": "4h 45m",
+    "duration": "3h 45m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -981,7 +1209,10 @@
     "duration": "2h 35m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 155,
+    "duty_duration_minutes": 270,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -993,7 +1224,10 @@
     "duration": "2h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1002,10 +1236,13 @@
     "flight_number": "CX520",
     "departure_time": "10:40",
     "arrival_time": "16:05",
-    "duration": "5h 25m",
+    "duration": "4h 25m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 265,
+    "duty_duration_minutes": 380,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1014,10 +1251,13 @@
     "flight_number": "CX588",
     "departure_time": "11:00",
     "arrival_time": "15:30",
-    "duration": "4h 30m",
+    "duration": "3h 30m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 210,
+    "duty_duration_minutes": 325,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1029,7 +1269,10 @@
     "duration": "2h 20m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 140,
+    "duty_duration_minutes": 255,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇦 Canada",
@@ -1039,9 +1282,12 @@
     "flight_number": "CX828",
     "departure_time": "11:00",
     "arrival_time": "14:00",
-    "duration": "3h 00m",
+    "duration": "15h 00m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 900,
+    "duty_duration_minutes": 1015,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -1053,7 +1299,10 @@
     "duration": "1h 35m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 95,
+    "duty_duration_minutes": 210,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇦 Canada",
@@ -1063,9 +1312,12 @@
     "flight_number": "CX814",
     "departure_time": "11:05",
     "arrival_time": "07:40",
-    "duration": "20h 35m",
+    "duration": "11h 35m",
     "departure_band": "Morning",
-    "arrival_next_day": true
+    "arrival_next_day": false,
+    "flight_duration_minutes": 695,
+    "duty_duration_minutes": 810,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1077,7 +1329,10 @@
     "duration": "3h 20m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 200,
+    "duty_duration_minutes": 315,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -1089,7 +1344,10 @@
     "duration": "3h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 230,
+    "duty_duration_minutes": 345,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -1099,9 +1357,12 @@
     "flight_number": "CX163",
     "departure_time": "11:20",
     "arrival_time": "23:15",
-    "duration": "11h 55m",
+    "duration": "8h 55m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 535,
+    "duty_duration_minutes": 650,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -1113,7 +1374,10 @@
     "duration": "3h 50m",
     "departure_band": "Morning",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 230,
+    "duty_duration_minutes": 345,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -1123,9 +1387,12 @@
     "flight_number": "CX157",
     "departure_time": "11:55",
     "arrival_time": "22:30",
-    "duration": "10h 35m",
+    "duration": "8h 35m",
     "departure_band": "Morning",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 515,
+    "duty_duration_minutes": 630,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -1134,10 +1401,13 @@
     "flight_number": "CX653",
     "departure_time": "12:00",
     "arrival_time": "14:00",
-    "duration": "2h 00m",
+    "duration": "3h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 180,
+    "duty_duration_minutes": 295,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1149,7 +1419,10 @@
     "duration": "3h 25m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 205,
+    "duty_duration_minutes": 320,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1159,9 +1432,12 @@
     "flight_number": "CX806",
     "departure_time": "12:10",
     "arrival_time": "13:55",
-    "duration": "1h 45m",
+    "duration": "14h 45m",
     "departure_band": "Afternoon",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 885,
+    "duty_duration_minutes": 1000,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1173,7 +1449,10 @@
     "duration": "2h 25m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 145,
+    "duty_duration_minutes": 260,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇩 Indonesia",
@@ -1185,7 +1464,10 @@
     "duration": "5h 05m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 305,
+    "duty_duration_minutes": 420,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇲🇾 Malaysia",
@@ -1197,7 +1479,10 @@
     "duration": "4h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 240,
+    "duty_duration_minutes": 355,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1209,7 +1494,10 @@
     "duration": "2h 35m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 155,
+    "duty_duration_minutes": 270,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1219,9 +1507,12 @@
     "flight_number": "CX884",
     "departure_time": "12:45",
     "arrival_time": "10:45",
-    "duration": "22h 00m",
+    "duration": "13h 00m",
     "departure_band": "Afternoon",
-    "arrival_next_day": true
+    "arrival_next_day": false,
+    "flight_duration_minutes": 780,
+    "duty_duration_minutes": 895,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1245,7 +1536,10 @@
     "duration": "2h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 120,
+    "duty_duration_minutes": 235,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -1254,10 +1548,13 @@
     "flight_number": "CX775",
     "departure_time": "13:20",
     "arrival_time": "15:25",
-    "duration": "2h 05m",
+    "duration": "3h 05m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 185,
+    "duty_duration_minutes": 300,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1266,10 +1563,13 @@
     "flight_number": "CX598",
     "departure_time": "13:20",
     "arrival_time": "18:05",
-    "duration": "4h 45m",
+    "duration": "3h 45m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇬🇧 United Kingdom",
@@ -1279,9 +1579,12 @@
     "flight_number": "CX253",
     "departure_time": "13:25",
     "arrival_time": "20:35",
-    "duration": "7h 10m",
+    "duration": "14h 10m",
     "departure_band": "Afternoon",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 850,
+    "duty_duration_minutes": 965,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1291,9 +1594,12 @@
     "flight_number": "CX852",
     "departure_time": "13:25",
     "arrival_time": "10:05",
-    "duration": "20h 40m",
+    "duration": "11h 40m",
     "departure_band": "Afternoon",
-    "arrival_next_day": true
+    "arrival_next_day": false,
+    "flight_duration_minutes": 700,
+    "duty_duration_minutes": 815,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1303,9 +1609,12 @@
     "flight_number": "CX870",
     "departure_time": "13:25",
     "arrival_time": "10:55",
-    "duration": "21h 30m",
+    "duration": "12h 30m",
     "departure_band": "Afternoon",
-    "arrival_next_day": true
+    "arrival_next_day": false,
+    "flight_duration_minutes": 750,
+    "duty_duration_minutes": 865,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1317,7 +1626,10 @@
     "duration": "2h 35m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 155,
+    "duty_duration_minutes": 270,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -1329,7 +1641,10 @@
     "duration": "1h 55m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 115,
+    "duty_duration_minutes": 230,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1341,7 +1656,10 @@
     "duration": "2h 45m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 165,
+    "duty_duration_minutes": 280,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1353,7 +1671,10 @@
     "arrival_time": "17:25",
     "duration": "3h 30m",
     "departure_band": "Afternoon",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 210,
+    "duty_duration_minutes": 325,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -1365,7 +1686,10 @@
     "duration": "2h 25m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 145,
+    "duty_duration_minutes": 260,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1377,7 +1701,10 @@
     "duration": "1h 30m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 90,
+    "duty_duration_minutes": 205,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇰🇷 South Korea",
@@ -1386,10 +1713,13 @@
     "flight_number": "CX418",
     "departure_time": "14:25",
     "arrival_time": "19:05",
-    "duration": "4h 40m",
+    "duration": "3h 40m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "KR"
+    "region": "KR",
+    "flight_duration_minutes": 220,
+    "duty_duration_minutes": 335,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -1398,10 +1728,13 @@
     "flight_number": "CX751",
     "departure_time": "14:30",
     "arrival_time": "16:30",
-    "duration": "2h 00m",
+    "duration": "3h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 180,
+    "duty_duration_minutes": 295,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇩 Indonesia",
@@ -1410,10 +1743,13 @@
     "flight_number": "CX629",
     "departure_time": "14:30",
     "arrival_time": "18:15",
-    "duration": "3h 45m",
+    "duration": "4h 45m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 285,
+    "duty_duration_minutes": 400,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -1422,10 +1758,13 @@
     "flight_number": "CX773",
     "departure_time": "14:45",
     "arrival_time": "17:20",
-    "duration": "2h 35m",
+    "duration": "3h 35m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 215,
+    "duty_duration_minutes": 330,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1437,7 +1776,10 @@
     "duration": "3h 25m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 205,
+    "duty_duration_minutes": 320,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -1449,7 +1791,10 @@
     "arrival_time": "22:40",
     "duration": "7h 40m",
     "departure_band": "Afternoon",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 460,
+    "duty_duration_minutes": 575,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1461,7 +1806,10 @@
     "duration": "2h 50m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -1473,7 +1821,10 @@
     "duration": "4h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 240,
+    "duty_duration_minutes": 355,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -1485,7 +1836,10 @@
     "duration": "2h 50m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1494,10 +1848,13 @@
     "flight_number": "CX500",
     "departure_time": "15:20",
     "arrival_time": "20:50",
-    "duration": "5h 30m",
+    "duration": "4h 30m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 270,
+    "duty_duration_minutes": 385,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇲🇾 Malaysia",
@@ -1518,10 +1875,13 @@
     "flight_number": "CX655",
     "departure_time": "15:35",
     "arrival_time": "17:15",
-    "duration": "1h 40m",
+    "duration": "2h 40m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 160,
+    "duty_duration_minutes": 275,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇻🇳 Vietnam",
@@ -1530,10 +1890,13 @@
     "flight_number": "CX769",
     "departure_time": "15:35",
     "arrival_time": "17:20",
-    "duration": "1h 45m",
+    "duration": "2h 45m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 165,
+    "duty_duration_minutes": 280,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇩 Indonesia",
@@ -1542,10 +1905,13 @@
     "flight_number": "CX719",
     "departure_time": "15:45",
     "arrival_time": "19:40",
-    "duration": "3h 55m",
+    "duration": "4h 55m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 295,
+    "duty_duration_minutes": 410,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -1557,7 +1923,10 @@
     "duration": "1h 55m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 115,
+    "duty_duration_minutes": 230,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇦 Canada",
@@ -1567,9 +1936,12 @@
     "flight_number": "CX810",
     "departure_time": "15:55",
     "arrival_time": "12:35",
-    "duration": "20h 40m",
+    "duration": "11h 40m",
     "departure_band": "Afternoon",
-    "arrival_next_day": true
+    "arrival_next_day": false,
+    "flight_duration_minutes": 700,
+    "duty_duration_minutes": 815,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1581,7 +1953,10 @@
     "duration": "2h 30m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 150,
+    "duty_duration_minutes": 265,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇭 Thailand",
@@ -1590,10 +1965,13 @@
     "flight_number": "CX701",
     "departure_time": "16:05",
     "arrival_time": "18:00",
-    "duration": "1h 55m",
+    "duration": "2h 55m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 175,
+    "duty_duration_minutes": 290,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1603,9 +1981,12 @@
     "flight_number": "CX876",
     "departure_time": "16:05",
     "arrival_time": "17:50",
-    "duration": "1h 45m",
+    "duration": "14h 45m",
     "departure_band": "Afternoon",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 885,
+    "duty_duration_minutes": 1000,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1614,10 +1995,13 @@
     "flight_number": "CX532",
     "departure_time": "16:15",
     "arrival_time": "21:15",
-    "duration": "5h 00m",
+    "duration": "4h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 240,
+    "duty_duration_minutes": 355,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1626,10 +2010,13 @@
     "flight_number": "CX542",
     "departure_time": "16:20",
     "arrival_time": "21:35",
-    "duration": "5h 15m",
+    "duration": "4h 15m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 255,
+    "duty_duration_minutes": 370,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1639,9 +2026,12 @@
     "flight_number": "CX840",
     "departure_time": "16:30",
     "arrival_time": "20:35",
-    "duration": "4h 05m",
+    "duration": "16h 05m",
     "departure_band": "Afternoon",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 965,
+    "duty_duration_minutes": 1080,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇯🇵 Japan",
@@ -1650,10 +2040,13 @@
     "flight_number": "CX502",
     "departure_time": "16:30",
     "arrival_time": "21:15",
-    "duration": "4h 45m",
+    "duration": "3h 45m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "JP"
+    "region": "JP",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -1665,7 +2058,10 @@
     "duration": "1h 35m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 95,
+    "duty_duration_minutes": 210,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -1677,7 +2073,10 @@
     "duration": "2h 25m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 145,
+    "duty_duration_minutes": 260,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇻🇳 Vietnam",
@@ -1686,10 +2085,13 @@
     "flight_number": "CX743",
     "departure_time": "16:55",
     "arrival_time": "18:10",
-    "duration": "1h 15m",
+    "duration": "2h 15m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 135,
+    "duty_duration_minutes": 250,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇲🇾 Malaysia",
@@ -1701,7 +2103,10 @@
     "duration": "4h 00m",
     "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 240,
+    "duty_duration_minutes": 355,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1711,9 +2116,12 @@
     "departure_time": "17:00",
     "arrival_time": "20:25",
     "duration": "3h 25m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 205,
+    "duty_duration_minutes": 320,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇸🇬 Singapore",
@@ -1723,9 +2131,12 @@
     "departure_time": "17:00",
     "arrival_time": "20:50",
     "duration": "3h 50m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 230,
+    "duty_duration_minutes": 345,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1735,9 +2146,12 @@
     "departure_time": "17:00",
     "arrival_time": "19:05",
     "duration": "2h 05m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 125,
+    "duty_duration_minutes": 240,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇳 India",
@@ -1759,9 +2173,12 @@
     "departure_time": "17:25",
     "arrival_time": "20:15",
     "duration": "2h 50m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1771,9 +2188,12 @@
     "departure_time": "17:35",
     "arrival_time": "19:40",
     "duration": "2h 05m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 125,
+    "duty_duration_minutes": 240,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1783,9 +2203,12 @@
     "departure_time": "17:40",
     "arrival_time": "19:25",
     "duration": "1h 45m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 105,
+    "duty_duration_minutes": 220,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇰🇷 South Korea",
@@ -1794,10 +2217,13 @@
     "flight_number": "CX430",
     "departure_time": "17:40",
     "arrival_time": "22:25",
-    "duration": "4h 45m",
-    "departure_band": "Evening",
+    "duration": "3h 45m",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "KR"
+    "region": "KR",
+    "flight_duration_minutes": 225,
+    "duty_duration_minutes": 340,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1807,9 +2233,12 @@
     "departure_time": "17:45",
     "arrival_time": "19:25",
     "duration": "1h 40m",
-    "departure_band": "Evening",
+    "departure_band": "Afternoon",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 100,
+    "duty_duration_minutes": 215,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇳 India",
@@ -1818,10 +2247,13 @@
     "flight_number": "CX665",
     "departure_time": "18:00",
     "arrival_time": "21:10",
-    "duration": "3h 10m",
+    "duration": "5h 40m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 340,
+    "duty_duration_minutes": 455,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -1833,7 +2265,10 @@
     "duration": "1h 50m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 110,
+    "duty_duration_minutes": 225,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇺🇸 United States",
@@ -1843,9 +2278,12 @@
     "flight_number": "CX882",
     "departure_time": "18:25",
     "arrival_time": "16:30",
-    "duration": "22h 05m",
+    "duration": "13h 05m",
     "departure_band": "Evening",
-    "arrival_next_day": true
+    "arrival_next_day": false,
+    "flight_duration_minutes": 785,
+    "duty_duration_minutes": 900,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1857,7 +2295,10 @@
     "duration": "2h 30m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 150,
+    "duty_duration_minutes": 265,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇳🇵 Nepal",
@@ -1866,10 +2307,13 @@
     "flight_number": "CX603",
     "departure_time": "18:55",
     "arrival_time": "21:45",
-    "duration": "2h 50m",
+    "duration": "5h 05m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 305,
+    "duty_duration_minutes": 420,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -1879,9 +2323,12 @@
     "flight_number": "CX135",
     "departure_time": "19:00",
     "arrival_time": "06:55",
-    "duration": "11h 55m",
+    "duration": "8h 55m",
     "departure_band": "Evening",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 535,
+    "duty_duration_minutes": 650,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1893,7 +2340,10 @@
     "duration": "3h 25m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 205,
+    "duty_duration_minutes": 320,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇩 Indonesia",
@@ -1902,10 +2352,13 @@
     "flight_number": "CX797",
     "departure_time": "19:05",
     "arrival_time": "22:55",
-    "duration": "3h 50m",
+    "duration": "4h 50m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 290,
+    "duty_duration_minutes": 405,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇦🇺 Australia",
@@ -1915,9 +2368,12 @@
     "flight_number": "CX111",
     "departure_time": "19:05",
     "arrival_time": "07:10",
-    "duration": "12h 05m",
+    "duration": "9h 05m",
     "departure_band": "Evening",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 545,
+    "duty_duration_minutes": 660,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇺🇸 United States",
@@ -1927,9 +2383,12 @@
     "flight_number": "CX812",
     "departure_time": "19:10",
     "arrival_time": "23:05",
-    "duration": "3h 55m",
+    "duration": "15h 55m",
     "departure_band": "Evening",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 955,
+    "duty_duration_minutes": 1070,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇦 Canada",
@@ -1939,9 +2398,12 @@
     "flight_number": "CX826",
     "departure_time": "19:10",
     "arrival_time": "22:10",
-    "duration": "3h 00m",
+    "duration": "15h 00m",
     "departure_band": "Evening",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 900,
+    "duty_duration_minutes": 1015,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1953,7 +2415,10 @@
     "arrival_time": "21:55",
     "duration": "2h 40m",
     "departure_band": "Evening",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 160,
+    "duty_duration_minutes": 275,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -1977,7 +2442,10 @@
     "duration": "2h 50m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -1989,7 +2457,10 @@
     "duration": "2h 00m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 120,
+    "duty_duration_minutes": 235,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -2001,7 +2472,10 @@
     "duration": "2h 40m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 160,
+    "duty_duration_minutes": 275,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇰🇷 South Korea",
@@ -2010,10 +2484,13 @@
     "flight_number": "CX426",
     "departure_time": "19:45",
     "arrival_time": "00:25",
-    "duration": "4h 40m",
+    "duration": "3h 40m",
     "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "KR"
+    "region": "KR",
+    "flight_duration_minutes": 220,
+    "duty_duration_minutes": 335,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -2025,7 +2502,10 @@
     "duration": "1h 05m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 65,
+    "duty_duration_minutes": 180,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -2037,7 +2517,10 @@
     "duration": "2h 25m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 145,
+    "duty_duration_minutes": 260,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -2049,7 +2532,10 @@
     "arrival_time": "23:40",
     "duration": "3h 15m",
     "departure_band": "Evening",
-    "arrival_next_day": false
+    "arrival_next_day": false,
+    "flight_duration_minutes": 195,
+    "duty_duration_minutes": 310,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -2061,7 +2547,10 @@
     "duration": "2h 25m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 145,
+    "duty_duration_minutes": 260,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇳 India",
@@ -2070,10 +2559,13 @@
     "flight_number": "CX663",
     "departure_time": "20:35",
     "arrival_time": "00:20",
-    "duration": "3h 45m",
+    "duration": "6h 15m",
     "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 375,
+    "duty_duration_minutes": 490,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇱🇰 Sri Lanka",
@@ -2082,10 +2574,13 @@
     "flight_number": "CX611",
     "departure_time": "20:35",
     "arrival_time": "23:30",
-    "duration": "2h 55m",
+    "duration": "5h 25m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 325,
+    "duty_duration_minutes": 440,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇳 India",
@@ -2094,10 +2589,13 @@
     "flight_number": "CX679",
     "departure_time": "20:35",
     "arrival_time": "23:50",
-    "duration": "3h 15m",
+    "duration": "5h 45m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 345,
+    "duty_duration_minutes": 460,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇳 India",
@@ -2106,10 +2604,13 @@
     "flight_number": "CX651",
     "departure_time": "20:35",
     "arrival_time": "23:35",
-    "duration": "3h 00m",
+    "duration": "5h 30m",
     "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 330,
+    "duty_duration_minutes": 445,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇮🇳 India",
@@ -2118,10 +2619,13 @@
     "flight_number": "CX623",
     "departure_time": "20:55",
     "arrival_time": "00:10",
-    "duration": "3h 15m",
+    "duration": "5h 45m",
     "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 345,
+    "duty_duration_minutes": 460,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇸🇬 Singapore",
@@ -2133,7 +2637,10 @@
     "duration": "3h 50m",
     "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 230,
+    "duty_duration_minutes": 345,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -2143,9 +2650,12 @@
     "departure_time": "21:05",
     "arrival_time": "23:55",
     "duration": "2h 50m",
-    "departure_band": "Night",
+    "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 170,
+    "duty_duration_minutes": 285,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇳🇿 New Zealand",
@@ -2155,9 +2665,12 @@
     "flight_number": "CX113",
     "departure_time": "21:10",
     "arrival_time": "12:50",
-    "duration": "15h 40m",
+    "duration": "10h 40m",
     "departure_band": "Evening",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 640,
+    "duty_duration_minutes": 755,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇲🇾 Malaysia",
@@ -2167,9 +2680,12 @@
     "departure_time": "21:30",
     "arrival_time": "01:30",
     "duration": "4h 00m",
-    "departure_band": "Night",
+    "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 240,
+    "duty_duration_minutes": 355,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇦🇺 Australia",
@@ -2179,9 +2695,12 @@
     "flight_number": "CX161",
     "departure_time": "21:35",
     "arrival_time": "09:40",
-    "duration": "12h 05m",
+    "duration": "9h 05m",
     "departure_band": "Evening",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 545,
+    "duty_duration_minutes": 660,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -2191,9 +2710,12 @@
     "departure_time": "21:40",
     "arrival_time": "23:10",
     "duration": "1h 30m",
-    "departure_band": "Night",
+    "departure_band": "Evening",
     "arrival_next_day": false,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 90,
+    "duty_duration_minutes": 205,
+    "arrival_day_offset": 0
   },
   {
     "country": "🇵🇭 Philippines",
@@ -2203,9 +2725,12 @@
     "departure_time": "21:55",
     "arrival_time": "00:15",
     "duration": "2h 20m",
-    "departure_band": "Night",
+    "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 140,
+    "duty_duration_minutes": 255,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇨🇳 China (Mainland)",
@@ -2215,9 +2740,12 @@
     "departure_time": "21:55",
     "arrival_time": "01:25",
     "duration": "3h 30m",
-    "departure_band": "Night",
+    "departure_band": "Evening",
     "arrival_next_day": true,
-    "region": "CN"
+    "region": "CN",
+    "flight_duration_minutes": 210,
+    "duty_duration_minutes": 325,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇹🇭 Thailand",
@@ -2226,10 +2754,13 @@
     "flight_number": "CX617",
     "departure_time": "22:15",
     "arrival_time": "00:10",
-    "duration": "1h 55m",
+    "duration": "2h 55m",
     "departure_band": "Night",
     "arrival_next_day": true,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 175,
+    "duty_duration_minutes": 290,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇮🇳 India",
@@ -2238,10 +2769,13 @@
     "flight_number": "CX673",
     "departure_time": "22:30",
     "arrival_time": "01:35",
-    "duration": "3h 05m",
+    "duration": "5h 35m",
     "departure_band": "Night",
     "arrival_next_day": true,
-    "region": "SA"
+    "region": "SA",
+    "flight_duration_minutes": 335,
+    "duty_duration_minutes": 450,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇻🇳 Vietnam",
@@ -2250,10 +2784,13 @@
     "flight_number": "CX721",
     "departure_time": "22:40",
     "arrival_time": "00:20",
-    "duration": "1h 40m",
+    "duration": "2h 40m",
     "departure_band": "Night",
     "arrival_next_day": true,
-    "region": "SEA"
+    "region": "SEA",
+    "flight_duration_minutes": 160,
+    "duty_duration_minutes": 275,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇬🇧 United Kingdom",
@@ -2263,9 +2800,12 @@
     "flight_number": "CX251",
     "departure_time": "22:45",
     "arrival_time": "05:40",
-    "duration": "6h 55m",
+    "duration": "13h 55m",
     "departure_band": "Night",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 835,
+    "duty_duration_minutes": 950,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇹🇼 Taiwan",
@@ -2277,7 +2817,10 @@
     "duration": "1h 45m",
     "departure_band": "Night",
     "arrival_next_day": true,
-    "region": "TW"
+    "region": "TW",
+    "flight_duration_minutes": 105,
+    "duty_duration_minutes": 220,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇧🇩 Bangladesh",
@@ -2299,9 +2842,12 @@
     "flight_number": "CX237",
     "departure_time": "23:05",
     "arrival_time": "06:15",
-    "duration": "7h 10m",
+    "duration": "14h 10m",
     "departure_band": "Night",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 850,
+    "duty_duration_minutes": 965,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇳🇱 Netherlands",
@@ -2311,9 +2857,12 @@
     "flight_number": "CX271",
     "departure_time": "23:15",
     "arrival_time": "06:55",
-    "duration": "7h 40m",
+    "duration": "13h 40m",
     "departure_band": "Night",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 820,
+    "duty_duration_minutes": 935,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇬🇧 United Kingdom",
@@ -2323,9 +2872,12 @@
     "flight_number": "CX255",
     "departure_time": "23:15",
     "arrival_time": "06:20",
-    "duration": "7h 05m",
+    "duration": "14h 05m",
     "departure_band": "Night",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 845,
+    "duty_duration_minutes": 960,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇦🇺 Australia",
@@ -2337,7 +2889,10 @@
     "arrival_time": "06:50",
     "duration": "7h 35m",
     "departure_band": "Night",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 455,
+    "duty_duration_minutes": 570,
+    "arrival_day_offset": 1
   },
   {
     "country": "🇩🇪 Germany",
@@ -2347,8 +2902,11 @@
     "flight_number": "CX289",
     "departure_time": "23:55",
     "arrival_time": "07:15",
-    "duration": "7h 20m",
+    "duration": "13h 20m",
     "departure_band": "Night",
-    "arrival_next_day": true
+    "arrival_next_day": true,
+    "flight_duration_minutes": 800,
+    "duty_duration_minutes": 915,
+    "arrival_day_offset": 1
   }
 ]

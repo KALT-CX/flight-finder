@@ -82,6 +82,32 @@ async function fetchAll() {
   return rows;
 }
 
+
+function localScheduleToUtc(value, timeZone) {
+  const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?/);
+  if (!match || !timeZone) return NaN;
+  const [, y, mo, d, h, mi, sec = "00"] = match;
+  const wallAsUtc = Date.UTC(+y, +mo - 1, +d, +h, +mi, +sec);
+  let guess = wallAsUtc;
+  for (let i = 0; i < 3; i += 1) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone, year:"numeric", month:"2-digit", day:"2-digit",
+      hour:"2-digit", minute:"2-digit", second:"2-digit", hourCycle:"h23"
+    }).formatToParts(new Date(guess));
+    const get = type => Number(parts.find(part => part.type === type)?.value || 0);
+    const rendered = Date.UTC(get("year"), get("month") - 1, get("day"), get("hour"), get("minute"), get("second"));
+    guess += wallAsUtc - rendered;
+  }
+  return guess;
+}
+
+function localDayOffset(departureValue, arrivalValue) {
+  const depDate = String(departureValue || "").slice(0, 10);
+  const arrDate = String(arrivalValue || "").slice(0, 10);
+  if (!depDate || !arrDate) return 0;
+  return Math.round((Date.parse(`${arrDate}T00:00:00Z`) - Date.parse(`${depDate}T00:00:00Z`)) / 86400000);
+}
+
 function normalize(raw, metadata) {
   const flight=String(raw.flight?.iata||"").replace(/\s+/g,"").toUpperCase();
   const dep=String(raw.departure?.iata||"").toUpperCase();
@@ -89,16 +115,24 @@ function normalize(raw, metadata) {
   const airport=String(raw.arrival?.iata||"").toUpperCase();
   if(dep!=="HKG"||airline!=="CX"||!/^CX\d{3}$/.test(flight)||!airport) return {skip:"other"};
   if(isCargo(raw,flight)) return {skip:"cargo",flight};
-  const departure=time(raw.departure?.scheduled), arrival=time(raw.arrival?.scheduled);
+  const departureValue=raw.departure?.scheduled;
+  const arrivalValue=raw.arrival?.scheduled;
+  const departure=time(departureValue), arrival=time(arrivalValue);
   if(!departure||!arrival) return {skip:"missing-time"};
-  const next=mins(arrival)<mins(departure);
+  const departureUtc=localScheduleToUtc(departureValue,raw.departure?.timezone);
+  const arrivalUtc=localScheduleToUtc(arrivalValue,raw.arrival?.timezone);
+  const flightMinutes=Math.round((arrivalUtc-departureUtc)/60000);
+  if(!Number.isFinite(flightMinutes)||flightMinutes<=0||flightMinutes>1200) return {skip:"invalid-duration",flight};
+  const dayOffset=localDayOffset(departureValue,arrivalValue);
   const meta=metadata.get(airport)||{};
   const country=AIRPORT_COUNTRY[airport]||meta.country||"Other";
   return {value:{
     country,region:regionForCountry(country),
     arrival_city:meta.arrival_city||`${String(raw.arrival?.airport||airport).trim()} (${airport})`,
     arrival_airport:airport,flight_number:flight,departure_time:departure,arrival_time:arrival,
-    duration:duration(mins(arrival)+(next?1440:0)-mins(departure)),departure_band:band(departure),arrival_next_day:next
+    duration:duration(flightMinutes),flight_duration_minutes:flightMinutes,
+    duty_duration_minutes:flightMinutes+115,
+    departure_band:band(departure),arrival_next_day:dayOffset>0,arrival_day_offset:dayOffset
   }};
 }
 
@@ -110,16 +144,27 @@ async function main(){
     return {...f,country,region:regionForCountry(country)};
   });
   const metadata=new Map(existing.map(f=>[f.arrival_airport,{country:f.country,arrival_city:f.arrival_city}]));
-  const raw=await fetchAll(); const accepted=[]; const cargo=[];
-  for(const item of raw){const result=normalize(item,metadata);if(result.value)accepted.push(result.value);if(result.skip==="cargo")cargo.push(result.flight);}
+  const raw=await fetchAll(); const accepted=[]; const cargo=[]; const invalidDuration=[];
+  for(const item of raw){const result=normalize(item,metadata);if(result.value)accepted.push(result.value);if(result.skip==="cargo")cargo.push(result.flight);if(result.skip==="invalid-duration")invalidDuration.push(result.flight);}
   const distinct=[...new Map(accepted.map(f=>[key(f),f])).values()];
-  const merged=new Map(existing.map(f=>[key(f),f])); const added=[];
-  for(const f of distinct){if(!merged.has(key(f))){merged.set(key(f),f);added.push(f);}}
+  const merged=new Map(existing.map(f=>[key(f),f])); const added=[]; const updated=[];
+  for(const f of distinct){
+    const k=key(f); const old=merged.get(k);
+    if(!old){merged.set(k,f);added.push(f);continue;}
+    if(old.flight_duration_minutes!==f.flight_duration_minutes||old.country!==f.country||old.region!==f.region){
+      merged.set(k,{...old,...f});updated.push(f);
+    }
+  }
   const final=[...merged.values()].sort((a,b)=>a.departure_time.localeCompare(b.departure_time)||a.arrival_airport.localeCompare(b.arrival_airport)||a.flight_number.localeCompare(b.flight_number));
-  console.log(`API records: ${raw.length}`);console.log(`Cargo records excluded: ${cargo.length}`);console.log(`Passenger records: ${distinct.length}`);console.log(`Existing non-CX3 records removed: ${removedExisting.length}`);console.log(`New records: ${added.length}`);console.log(`Final records: ${final.length}`);
+  console.log(`API records: ${raw.length}`);console.log(`Cargo records excluded: ${cargo.length}`);console.log(`Passenger records: ${distinct.length}`);console.log(`Existing non-CX3 records removed: ${removedExisting.length}`);console.log(`Invalid durations excluded: ${invalidDuration.length}`);console.log(`New records: ${added.length}`);console.log(`Existing records corrected: ${updated.length}`);console.log(`Final records: ${final.length}`);
   if(cargo.length) console.log(`Excluded cargo: ${[...new Set(cargo)].join(", ")}`);
-  if(!added.length&&!removedExisting.length){console.log("No passenger timetable differences found. flights.json unchanged.");return;}
+  if(!added.length&&!updated.length&&!removedExisting.length){console.log("No passenger timetable differences found. flights.json unchanged.");return;}
   for(const f of added) console.log(`ADD ${f.flight_number} HKG-${f.arrival_airport} ${f.departure_time}-${f.arrival_time} ${f.country}`);
+  for(const f of updated) console.log(`FIX ${f.flight_number} HKG-${f.arrival_airport}: flight ${f.duration}, duty ${duration(f.duty_duration_minutes)}`);
+  const longHaul=final.filter(f=>["EU","NA","OC","ME","AF"].includes(f.region));
+  const audit=longHaul.map(f=>({flight_number:f.flight_number,arrival_airport:f.arrival_airport,region:f.region,departure_time:f.departure_time,arrival_time:f.arrival_time,flight_duration:duration(f.flight_duration_minutes||0),duty_duration:duration(f.duty_duration_minutes||0),status:(f.flight_duration_minutes>=240&&f.flight_duration_minutes<=1200)?"OK":"CHECK"}));
+  await fs.writeFile("flight-time-audit.json",`${JSON.stringify(audit,null,2)}\n`);
+  await fs.writeFile("flights-meta.json",`${JSON.stringify({updated_at:new Date().toISOString(),source:"Aviationstack /v1/flights",records:final.length,long_haul_checked:audit.length},null,2)}\n`);
   await fs.writeFile(`${OUTPUT_FILE}.tmp`,`${JSON.stringify(final,null,2)}\n`);
   await fs.rename(`${OUTPUT_FILE}.tmp`,OUTPUT_FILE);
   console.log("flights.json updated successfully.");
