@@ -158,13 +158,13 @@ async function main(){
   const final=[...merged.values()].sort((a,b)=>a.departure_time.localeCompare(b.departure_time)||a.arrival_airport.localeCompare(b.arrival_airport)||a.flight_number.localeCompare(b.flight_number));
   console.log(`API records: ${raw.length}`);console.log(`Cargo records excluded: ${cargo.length}`);console.log(`Passenger records: ${distinct.length}`);console.log(`Existing non-CX3 records removed: ${removedExisting.length}`);console.log(`Invalid durations excluded: ${invalidDuration.length}`);console.log(`New records: ${added.length}`);console.log(`Existing records corrected: ${updated.length}`);console.log(`Final records: ${final.length}`);
   if(cargo.length) console.log(`Excluded cargo: ${[...new Set(cargo)].join(", ")}`);
-  if(!added.length&&!updated.length&&!removedExisting.length){console.log("No passenger timetable differences found. flights.json unchanged.");return;}
   for(const f of added) console.log(`ADD ${f.flight_number} HKG-${f.arrival_airport} ${f.departure_time}-${f.arrival_time} ${f.country}`);
   for(const f of updated) console.log(`FIX ${f.flight_number} HKG-${f.arrival_airport}: flight ${f.duration}, duty ${duration(f.duty_duration_minutes)}`);
   const longHaul=final.filter(f=>["EU","NA","OC","ME","AF"].includes(f.region));
   const audit=longHaul.map(f=>({flight_number:f.flight_number,arrival_airport:f.arrival_airport,region:f.region,departure_time:f.departure_time,arrival_time:f.arrival_time,flight_duration:duration(f.flight_duration_minutes||0),duty_duration:duration(f.duty_duration_minutes||0),status:(f.flight_duration_minutes>=240&&f.flight_duration_minutes<=1200)?"OK":"CHECK"}));
   await fs.writeFile("flight-time-audit.json",`${JSON.stringify(audit,null,2)}\n`);
   await fs.writeFile("flights-meta.json",`${JSON.stringify({updated_at:new Date().toISOString(),source:"Aviationstack /v1/flights",records:final.length,long_haul_checked:audit.length},null,2)}\n`);
+  if(!added.length&&!updated.length&&!removedExisting.length){console.log("No passenger timetable differences found. flights.json unchanged; metadata refreshed.");return;}
   await fs.writeFile(`${OUTPUT_FILE}.tmp`,`${JSON.stringify(final,null,2)}\n`);
   await fs.rename(`${OUTPUT_FILE}.tmp`,OUTPUT_FILE);
   console.log("flights.json updated successfully.");
