@@ -1,0 +1,31 @@
+name: Update CX Flights
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-flights:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch and merge CX passenger flights
+        env:
+          AVIATIONSTACK_API_KEY: ${{ secrets.AVIATIONSTACK_API_KEY }}
+        run: node update-flights.mjs
+
+      - name: Commit updated flight data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh CX flight timetable"
+          file_pattern: "flights.json flights-meta.json flight-time-audit.json"
