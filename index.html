@@ -318,6 +318,39 @@
       font-size: 13px;
     }
 
+
+    .refresh-data-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: auto;
+      min-height: 36px;
+      padding: 7px 12px;
+      color: var(--jade);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+      border: 1px solid var(--jade);
+      border-radius: 10px;
+      background: #fff;
+      transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+    .refresh-data-btn:hover {
+      color: #fff;
+      background: var(--jade);
+      transform: translateY(-1px);
+    }
+    .refresh-data-btn:focus-visible {
+      outline: 3px solid rgba(0, 93, 99, 0.18);
+      outline-offset: 2px;
+    }
+    .refresh-data-icon {
+      font-size: 15px;
+      line-height: 1;
+    }
     .active-filters {
       display: flex;
       flex-wrap: wrap;
@@ -555,6 +588,9 @@
       .section-head { flex-direction: column; align-items: flex-start; gap: 8px; margin: 8px 0 10px; }
       h2 { font-size: 21px; }
       .table-tools { width: 100%; justify-content: space-between; font-size: 12px; }
+      .table-tools { flex-wrap: wrap; }
+      .refresh-data-btn { width: 100%; min-height: 40px; }
+      .table-tools label { margin-left: auto; }
       .table-tools select { min-width: 80px; padding: 7px 8px; font-size: 12px; }
       .table-wrap { border: 0; border-radius: 16px; background: transparent; box-shadow: none; overflow: visible; }
       .table-scroll { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
@@ -672,6 +708,17 @@
         </div>
 
         <div class="table-tools">
+          <a
+            class="refresh-data-btn"
+            href="https://github.com/KALT-CX/flight-finder/actions/workflows/update-cx-flights.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Open GitHub Actions to refresh the CX passenger timetable"
+            aria-label="Refresh flight data using GitHub Actions"
+          >
+            <span class="refresh-data-icon" aria-hidden="true">↻</span>
+            <span>Refresh flight data</span>
+          </a>
           <label for="rowsPerPage">Display rows</label>
           <select id="rowsPerPage">
             <option value="10" selected>10</option>
@@ -805,8 +852,8 @@
       const departureMinutes = minutesFromTime(record.departure_time);
       const arrivalMinutes = minutesFromTime(record.arrival_time);
       const dutyStartAbsolute = departureMinutes - 85;
-      const arrivalDayOffset = Number(record.arrival_day_offset ?? (record.arrival_next_day ? 1 : 0));
       const dutyEndLocalAbsolute = arrivalMinutes + 30;
+      const arrivalDayOffset = Number(record.arrival_day_offset ?? (record.arrival_next_day ? 1 : 0));
       const dutyDurationMinutes = Number(record.duty_duration_minutes || 0) ||
         (Number(record.flight_duration_minutes || 0) + 115);
 
@@ -882,8 +929,7 @@
     }
 
     function regionName(code) {
-      return ({ CN:'China (Mainland)', JP:'Japan', KR:'South Korea', TW:'Taiwan', SEA:'Southeast Asia',
-        SA:'South Asia', EU:'Europe', NA:'North America', OC:'Oceania', ME:'Middle East', AF:'Africa', OTHER:'Other' })[code] || code || 'All regions';
+      return ({ CN:'China (Mainland)', JP:'Japan', KR:'South Korea', TW:'Taiwan', SEA:'Southeast Asia', SA:'South Asia', EU:'Europe', NA:'North America', OC:'Oceania', ME:'Middle East', AF:'Africa', OTHER:'Other' })[code] || code || 'All regions';
     }
 
     function populateFilters() {
@@ -1136,7 +1182,6 @@
         if (!response.ok) throw new Error(`Unable to load flights.json (${response.status})`);
 
         flights = (await response.json()).map(enrichDutyTimes);
-
         let updatedAt = response.headers.get('Last-Modified');
         try {
           const metaResponse = await fetch('flights-meta.json?v=' + Date.now(), { cache: 'no-store' });
@@ -1145,9 +1190,8 @@
             if (meta.updated_at) updatedAt = meta.updated_at;
           }
         } catch (metaError) {
-          console.info('flights-meta.json is not available; using HTTP Last-Modified.', metaError);
+          console.info('Using flights.json Last-Modified header.', metaError);
         }
-
         if (updatedAt) {
           const updatedDate = new Date(updatedAt);
           $('lastUpdated').textContent = `Data updated: ${updatedDate.toLocaleString('en-GB', {
@@ -1157,7 +1201,6 @@
         } else {
           $('lastUpdated').textContent = 'Data update time unavailable';
         }
-
         populateFilters();
         updateAirportOptions();
         $('heroTotal').textContent = flights.length;
