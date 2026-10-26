@@ -20,6 +20,16 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX880",
+    "arrival_airport": "LAX",
+    "region": "NA",
+    "departure_time": "00:10",
+    "arrival_time": "22:05",
+    "flight_duration": "12h 55m",
+    "duty_duration": "14h 50m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX165",
     "arrival_airport": "BNE",
     "region": "OC",
@@ -27,6 +37,36 @@
     "arrival_time": "10:50",
     "flight_duration": "8h 35m",
     "duty_duration": "10h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX291",
+    "arrival_airport": "BRU",
+    "region": "EU",
+    "departure_time": "00:15",
+    "arrival_time": "07:20",
+    "flight_duration": "14h 05m",
+    "duty_duration": "16h 00m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX255",
+    "arrival_airport": "LHR",
+    "region": "EU",
+    "departure_time": "00:15",
+    "arrival_time": "06:50",
+    "flight_duration": "14h 35m",
+    "duty_duration": "16h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX289",
+    "arrival_airport": "FRA",
+    "region": "EU",
+    "departure_time": "00:20",
+    "arrival_time": "07:05",
+    "flight_duration": "13h 45m",
+    "duty_duration": "15h 40m",
     "status": "OK"
   },
   {
@@ -40,6 +80,26 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX261",
+    "arrival_airport": "CDG",
+    "region": "EU",
+    "departure_time": "00:25",
+    "arrival_time": "07:40",
+    "flight_duration": "14h 15m",
+    "duty_duration": "16h 10m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX237",
+    "arrival_airport": "LHR",
+    "region": "EU",
+    "departure_time": "00:25",
+    "arrival_time": "07:00",
+    "flight_duration": "14h 35m",
+    "duty_duration": "16h 30m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX383",
     "arrival_airport": "ZRH",
     "region": "EU",
@@ -47,6 +107,56 @@
     "arrival_time": "07:30",
     "flight_duration": "13h 05m",
     "duty_duration": "15h 00m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX261",
+    "arrival_airport": "CDG",
+    "region": "EU",
+    "departure_time": "00:30",
+    "arrival_time": "07:45",
+    "flight_duration": "14h 15m",
+    "duty_duration": "16h 10m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX749",
+    "arrival_airport": "JNB",
+    "region": "AF",
+    "departure_time": "00:30",
+    "arrival_time": "07:25",
+    "flight_duration": "12h 55m",
+    "duty_duration": "14h 50m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX880",
+    "arrival_airport": "LAX",
+    "region": "NA",
+    "departure_time": "00:30",
+    "arrival_time": "22:05",
+    "flight_duration": "12h 35m",
+    "duty_duration": "14h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX105",
+    "arrival_airport": "MEL",
+    "region": "OC",
+    "departure_time": "00:30",
+    "arrival_time": "12:30",
+    "flight_duration": "9h 00m",
+    "duty_duration": "10h 55m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX749",
+    "arrival_airport": "JNB",
+    "region": "AF",
+    "departure_time": "00:35",
+    "arrival_time": "07:25",
+    "flight_duration": "12h 50m",
+    "duty_duration": "14h 45m",
     "status": "OK"
   },
   {
@@ -80,6 +190,16 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX315",
+    "arrival_airport": "MAD",
+    "region": "EU",
+    "departure_time": "00:45",
+    "arrival_time": "08:35",
+    "flight_duration": "14h 50m",
+    "duty_duration": "16h 45m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX181",
     "arrival_airport": "SYD",
     "region": "OC",
@@ -97,6 +217,16 @@
     "arrival_time": "21:25",
     "flight_duration": "11h 40m",
     "duty_duration": "13h 35m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX383",
+    "arrival_airport": "ZRH",
+    "region": "EU",
+    "departure_time": "00:45",
+    "arrival_time": "07:25",
+    "flight_duration": "13h 40m",
+    "duty_duration": "15h 35m",
     "status": "OK"
   },
   {
@@ -120,6 +250,26 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX872",
+    "arrival_airport": "SFO",
+    "region": "NA",
+    "departure_time": "00:55",
+    "arrival_time": "21:55",
+    "flight_duration": "12h 00m",
+    "duty_duration": "13h 55m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX181",
+    "arrival_airport": "SYD",
+    "region": "OC",
+    "departure_time": "00:55",
+    "arrival_time": "13:00",
+    "flight_duration": "9h 05m",
+    "duty_duration": "11h 00m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX301",
     "arrival_airport": "MUC",
     "region": "EU",
@@ -127,6 +277,16 @@
     "arrival_time": "08:05",
     "flight_duration": "13h 05m",
     "duty_duration": "15h 00m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX233",
+    "arrival_airport": "MXP",
+    "region": "EU",
+    "departure_time": "01:00",
+    "arrival_time": "07:40",
+    "flight_duration": "13h 40m",
+    "duty_duration": "15h 35m",
     "status": "OK"
   },
   {
@@ -160,6 +320,46 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX219",
+    "arrival_airport": "MAN",
+    "region": "EU",
+    "departure_time": "01:05",
+    "arrival_time": "07:55",
+    "flight_duration": "14h 50m",
+    "duty_duration": "16h 45m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX259",
+    "arrival_airport": "MAN",
+    "region": "EU",
+    "departure_time": "01:05",
+    "arrival_time": "07:55",
+    "flight_duration": "14h 50m",
+    "duty_duration": "16h 45m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX888",
+    "arrival_airport": "YVR",
+    "region": "NA",
+    "departure_time": "01:05",
+    "arrival_time": "21:35",
+    "flight_duration": "11h 30m",
+    "duty_duration": "13h 25m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX301",
+    "arrival_airport": "MUC",
+    "region": "EU",
+    "departure_time": "01:10",
+    "arrival_time": "07:35",
+    "flight_duration": "13h 25m",
+    "duty_duration": "15h 20m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX872",
     "arrival_airport": "SFO",
     "region": "NA",
@@ -177,6 +377,16 @@
     "arrival_time": "06:00",
     "flight_duration": "15h 35m",
     "duty_duration": "17h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX844",
+    "arrival_airport": "JFK",
+    "region": "NA",
+    "departure_time": "02:25",
+    "arrival_time": "05:45",
+    "flight_duration": "15h 20m",
+    "duty_duration": "17h 15m",
     "status": "OK"
   },
   {
@@ -200,6 +410,16 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX257",
+    "arrival_airport": "LHR",
+    "region": "EU",
+    "departure_time": "08:10",
+    "arrival_time": "15:00",
+    "flight_duration": "14h 50m",
+    "duty_duration": "16h 45m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX139",
     "arrival_airport": "SYD",
     "region": "OC",
@@ -207,6 +427,16 @@
     "arrival_time": "20:45",
     "flight_duration": "9h 00m",
     "duty_duration": "10h 55m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX139",
+    "arrival_airport": "SYD",
+    "region": "OC",
+    "departure_time": "08:45",
+    "arrival_time": "20:50",
+    "flight_duration": "9h 05m",
+    "duty_duration": "11h 00m",
     "status": "OK"
   },
   {
@@ -220,6 +450,26 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX830",
+    "arrival_airport": "JFK",
+    "region": "NA",
+    "departure_time": "09:30",
+    "arrival_time": "13:00",
+    "flight_duration": "15h 30m",
+    "duty_duration": "17h 25m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX163",
+    "arrival_airport": "MEL",
+    "region": "OC",
+    "departure_time": "11:00",
+    "arrival_time": "23:05",
+    "flight_duration": "9h 05m",
+    "duty_duration": "11h 00m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX828",
     "arrival_airport": "YYZ",
     "region": "NA",
@@ -227,6 +477,16 @@
     "arrival_time": "14:00",
     "flight_duration": "15h 00m",
     "duty_duration": "16h 55m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX828",
+    "arrival_airport": "YYZ",
+    "region": "NA",
+    "departure_time": "11:00",
+    "arrival_time": "13:30",
+    "flight_duration": "14h 30m",
+    "duty_duration": "16h 25m",
     "status": "OK"
   },
   {
@@ -270,6 +530,46 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX806",
+    "arrival_airport": "ORD",
+    "region": "NA",
+    "departure_time": "12:15",
+    "arrival_time": "13:30",
+    "flight_duration": "14h 15m",
+    "duty_duration": "16h 10m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX157",
+    "arrival_airport": "BNE",
+    "region": "OC",
+    "departure_time": "12:35",
+    "arrival_time": "23:20",
+    "flight_duration": "8h 45m",
+    "duty_duration": "10h 40m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX884",
+    "arrival_airport": "LAX",
+    "region": "NA",
+    "departure_time": "12:40",
+    "arrival_time": "10:20",
+    "flight_duration": "12h 40m",
+    "duty_duration": "14h 35m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX297",
+    "arrival_airport": "MAD",
+    "region": "EU",
+    "departure_time": "12:40",
+    "arrival_time": "20:30",
+    "flight_duration": "14h 50m",
+    "duty_duration": "16h 45m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX884",
     "arrival_airport": "LAX",
     "region": "NA",
@@ -277,6 +577,16 @@
     "arrival_time": "10:45",
     "flight_duration": "13h 00m",
     "duty_duration": "14h 55m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX852",
+    "arrival_airport": "SEA",
+    "region": "NA",
+    "departure_time": "13:05",
+    "arrival_time": "09:45",
+    "flight_duration": "11h 40m",
+    "duty_duration": "13h 35m",
     "status": "OK"
   },
   {
@@ -310,6 +620,26 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX253",
+    "arrival_airport": "LHR",
+    "region": "EU",
+    "departure_time": "13:30",
+    "arrival_time": "20:10",
+    "flight_duration": "14h 40m",
+    "duty_duration": "16h 35m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX870",
+    "arrival_airport": "SFO",
+    "region": "NA",
+    "departure_time": "13:30",
+    "arrival_time": "10:30",
+    "flight_duration": "12h 00m",
+    "duty_duration": "13h 55m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX171",
     "arrival_airport": "PER",
     "region": "OC",
@@ -317,6 +647,26 @@
     "arrival_time": "22:40",
     "flight_duration": "7h 40m",
     "duty_duration": "9h 35m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX171",
+    "arrival_airport": "PER",
+    "region": "OC",
+    "departure_time": "15:20",
+    "arrival_time": "22:55",
+    "flight_duration": "7h 35m",
+    "duty_duration": "9h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX838",
+    "arrival_airport": "YVR",
+    "region": "NA",
+    "departure_time": "15:30",
+    "arrival_time": "12:00",
+    "flight_duration": "11h 30m",
+    "duty_duration": "13h 25m",
     "status": "OK"
   },
   {
@@ -340,6 +690,16 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX876",
+    "arrival_airport": "DFW",
+    "region": "NA",
+    "departure_time": "16:30",
+    "arrival_time": "17:50",
+    "flight_duration": "14h 20m",
+    "duty_duration": "16h 15m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX840",
     "arrival_airport": "JFK",
     "region": "NA",
@@ -347,6 +707,16 @@
     "arrival_time": "20:35",
     "flight_duration": "16h 05m",
     "duty_duration": "18h 00m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX840",
+    "arrival_airport": "JFK",
+    "region": "NA",
+    "departure_time": "16:35",
+    "arrival_time": "20:05",
+    "flight_duration": "15h 30m",
+    "duty_duration": "17h 25m",
     "status": "OK"
   },
   {
@@ -367,6 +737,26 @@
     "arrival_time": "06:55",
     "flight_duration": "8h 55m",
     "duty_duration": "10h 50m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX111",
+    "arrival_airport": "SYD",
+    "region": "OC",
+    "departure_time": "19:00",
+    "arrival_time": "07:15",
+    "flight_duration": "9h 15m",
+    "duty_duration": "11h 10m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX135",
+    "arrival_airport": "MEL",
+    "region": "OC",
+    "departure_time": "19:05",
+    "arrival_time": "07:10",
+    "flight_duration": "9h 05m",
+    "duty_duration": "11h 00m",
     "status": "OK"
   },
   {
@@ -400,6 +790,36 @@
     "status": "OK"
   },
   {
+    "flight_number": "CX826",
+    "arrival_airport": "YYZ",
+    "region": "NA",
+    "departure_time": "19:20",
+    "arrival_time": "21:55",
+    "flight_duration": "14h 35m",
+    "duty_duration": "16h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX812",
+    "arrival_airport": "BOS",
+    "region": "NA",
+    "departure_time": "19:45",
+    "arrival_time": "23:00",
+    "flight_duration": "15h 15m",
+    "duty_duration": "17h 10m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX882",
+    "arrival_airport": "LAX",
+    "region": "NA",
+    "departure_time": "19:50",
+    "arrival_time": "17:30",
+    "flight_duration": "12h 40m",
+    "duty_duration": "14h 35m",
+    "status": "OK"
+  },
+  {
     "flight_number": "CX113",
     "arrival_airport": "AKL",
     "region": "OC",
@@ -407,6 +827,26 @@
     "arrival_time": "12:50",
     "flight_duration": "10h 40m",
     "duty_duration": "12h 35m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX113",
+    "arrival_airport": "AKL",
+    "region": "OC",
+    "departure_time": "21:25",
+    "arrival_time": "13:25",
+    "flight_duration": "11h 00m",
+    "duty_duration": "12h 55m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX161",
+    "arrival_airport": "SYD",
+    "region": "OC",
+    "departure_time": "21:25",
+    "arrival_time": "09:35",
+    "flight_duration": "9h 10m",
+    "duty_duration": "11h 05m",
     "status": "OK"
   },
   {
@@ -427,6 +867,16 @@
     "arrival_time": "05:40",
     "flight_duration": "13h 55m",
     "duty_duration": "15h 50m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX251",
+    "arrival_airport": "LHR",
+    "region": "EU",
+    "departure_time": "23:00",
+    "arrival_time": "05:25",
+    "flight_duration": "14h 25m",
+    "duty_duration": "16h 20m",
     "status": "OK"
   },
   {
@@ -467,6 +917,36 @@
     "arrival_time": "06:50",
     "flight_duration": "7h 35m",
     "duty_duration": "9h 30m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX143",
+    "arrival_airport": "PER",
+    "region": "OC",
+    "departure_time": "23:15",
+    "arrival_time": "06:55",
+    "flight_duration": "7h 40m",
+    "duty_duration": "9h 35m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX271",
+    "arrival_airport": "AMS",
+    "region": "EU",
+    "departure_time": "23:30",
+    "arrival_time": "06:40",
+    "flight_duration": "14h 10m",
+    "duty_duration": "16h 05m",
+    "status": "OK"
+  },
+  {
+    "flight_number": "CX153",
+    "arrival_airport": "BNE",
+    "region": "OC",
+    "departure_time": "23:55",
+    "arrival_time": "10:45",
+    "flight_duration": "8h 50m",
+    "duty_duration": "10h 45m",
     "status": "OK"
   },
   {
